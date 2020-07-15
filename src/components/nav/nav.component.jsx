@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option3.svg';
 
 import {  
-    NavContainer, LogoContainer, InputContainer,
-    UserIconContainer, CartIconContainer, ButtonContainer, Button 
+    NavContainer, LogoContainer, IconContainer,
+     ButtonContainer, Button,Icons 
 } from './nav.styles';
 
 const Navbar = () => (
@@ -13,19 +12,17 @@ const Navbar = () => (
         <LogoContainer to="/">
             <Logo classname="logo" />
         </LogoContainer>
-        <InputContainer type="search" placeholder=" Search"/>
-        <UserIconContainer>
-            <i class="ri-user-add-line"></i>
-        </UserIconContainer>
-        <CartIconContainer>
-            <i class="ri-shopping-cart-line"></i>
-        </CartIconContainer>
         <ButtonContainer>
-            <Button >Living Room<Link to="/" /></Button>
-            <Button >Kitchen&Dinner</Button>
-            <Button >Bedroom</Button>
-            <Button >Contact Us</Button>
+            <Button to="/">Living Room</Button>
+            <Button to="/">Kitchen&Dinner</Button>
+            <Button to="/">Bedroom</Button>
+            <Button to="/">Contact Us</Button>
         </ButtonContainer>
+        <IconContainer>
+            <span ><i class="ri-search-2-line"></i></span>
+            <Icons to="/"><i class="ri-user-add-line"></i></Icons>
+            <Icons to="/"><i class="ri-shopping-cart-line"></i></Icons>
+        </IconContainer>
     </NavContainer>
 );
 

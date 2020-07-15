@@ -2,65 +2,74 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const NavContainer = styled.div`
-    height: 115px;
+    height: 77px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: rgba(0,0,0,0.7);
+    @media screen and (max-width: 800px) {
+        height: 60px;
+    }
 `;
 
 export const LogoContainer = styled(Link)`
-    position: relative;
-    padding-top: 0.625em;
-    padding-left: 17.25em;
-    width: 14.1875em;
+    width: 227px;
     height: 100%;
+    padding: 15px 25px;
+    text-align: center;
+    @media screen and (max-width: 800px) {
+        width: 170px;
+        padding: 10px;
+    }
 `;
 
-export const UserIconContainer = styled.div`
-    position: absolute;
-    top: 10px;
-    left: 1544px;
-    font-size: 43px;
+export const IconContainer = styled.div`
+    font-size: 40px;
+    display: flex;
+    padding: 15px 30px;
+    justify-content: flex-end;
     color: white;
-`;
-export const CartIconContainer = styled.div`
-    position: absolute;
-    top: 14px;
-    left: 1600px;
-    font-size: 35px;
+    i{
+        padding: 0 0 0 15px;
+    }
+    span{
+        height: 45px;
+        width: 45px;
+        background-color: rgba(255,255,255,1);
+        border-radius: 50%;
+        color: black;
+        text-align: center;
+        font-size:20px;
+        line-height: 45px;
+        i{
+            padding: 0;
+        }
+    }
+    
+`; 
+export const Icons = styled(Link)`
     color: white;
+    text-decoration: none;
 `;
-
- export const InputContainer = styled.input`
-    position: absolute;
-    top: 13px;
-    left: 581px;
-    width: 866px;
-    height: 38px;
-    border: None;
-    border-radius: 20px;
- `;
 
  export const ButtonContainer = styled.div`
+    padding: 15px;
+    width: 1000px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    top: 62px;
-    left: 280px;
-    width: 1373px;
-    height: 40px;
  `;
 
  export const Button = styled(Link)`
     width: 133px;
     height: 40px;
-    border-radius: 20px;
-    text-decoration: none;
+    border-radius: 4px;
     text-align: center;
     line-height: 40px;
-    font: Regular 16px Open Sans;
+    font-family:"Open Sans";
+    font-size: 16px;
     color: rgba(39, 149, 76, 1);
     background-color: rgba(255, 255,255, 1);
     box-shadow:  0 1px 3px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
  `;

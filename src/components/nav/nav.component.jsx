@@ -4,8 +4,10 @@ import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option3.svg';
 
 import {  
     NavContainer, LogoContainer, IconContainer,
-     ButtonContainer, Button,Icons 
+     ButtonContainer,Icons 
 } from './nav.styles';
+
+import { CustomButton } from '../style-utils/utils.styles'
 
 const Navbar = () => (
     <NavContainer>
@@ -13,10 +15,10 @@ const Navbar = () => (
             <Logo classname="logo" />
         </LogoContainer>
         <ButtonContainer>
-            <Button to="/">Living Room</Button>
-            <Button to="/">Kitchen&Dinner</Button>
-            <Button to="/">Bedroom</Button>
-            <Button to="/">Contact Us</Button>
+            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
+            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Kitchen&Dinner</CustomButton>
+            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Bedroom</CustomButton>
+            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Contact Us</CustomButton>
         </ButtonContainer>
         <IconContainer>
             <span ><i class="ri-search-2-line"></i></span>

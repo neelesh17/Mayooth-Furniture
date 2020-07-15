@@ -53,23 +53,9 @@ export const Icons = styled(Link)`
 `;
 
  export const ButtonContainer = styled.div`
-    padding: 15px;
+    padding: 5px;
     width: 1000px;
     height: 40px;
     display: flex;
     justify-content: space-between;
- `;
-
- export const Button = styled(Link)`
-    width: 133px;
-    height: 40px;
-    border-radius: 4px;
-    text-align: center;
-    line-height: 40px;
-    font-family:"Open Sans";
-    font-size: 16px;
-    color: rgba(39, 149, 76, 1);
-    background-color: rgba(255, 255,255, 1);
-    box-shadow:  0 1px 3px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
  `;

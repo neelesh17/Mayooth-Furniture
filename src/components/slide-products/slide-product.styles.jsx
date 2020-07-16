@@ -3,13 +3,13 @@ import {CustomButton ,ImageContainer}  from '../style-utils/utils.styles'
 
 export const ProductSlide = styled.div`
     width: 100%;
-    height: 450px;
+    height: 400px;
 `;
 
 export const ProductContainer = styled.div`
-    height: 500px;
-    width: 1366px;
-    margin: 10px 277px;
+    height: auto;
+    width: 1600px;
+    margin: 10px 5%;
     display: flex;
     justify-content: space-between;
    
@@ -34,9 +34,21 @@ export const Button = styled(CustomButton)`
     position: relative;
     top: -100px;
     display: none;
-    transition: 1s ease;
+    transition: 0.5s ease;
 `;
 
 export const Image = styled(ImageContainer)`
-    transition: 1s ease;
+    transition: 0.5s ease;
+`;
+
+export const Arrows = styled.div`
+    cursor: pointer;
+    position: relative;
+    top: 6em;
+    width: auto;
+    height: 14%;
+    font-size: 100%;
+    color: rgba(112, 112, 112, 1);
+    user-select: none;
+    transition: 0.4s ease;
 `;

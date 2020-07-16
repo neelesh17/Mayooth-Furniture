@@ -31,7 +31,7 @@ export const DotContainer = styled.div`
     justify-content: space-between;
     height: 15%;
     width: 72px;
-    margin-left: 45%;
+    margin-left: 47%;
 `;
 
 export const Dot = styled.span`
@@ -48,9 +48,8 @@ export const PrevNextArrows = styled.a`
     cursor: pointer;
     margin-top: 12%;
     width: auto;
-    height: 10%;
-    font-weight: bold;
-    font-size: 30px;
+    height: 14%;
+    font-size: 350%;
     border-radius: 3px;
     user-select: none;
     transition: 0.4s ease;

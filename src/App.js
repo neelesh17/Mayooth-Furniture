@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Navbar from './components/nav/nav.component';
+import Footer from './components/footer/footer.component';
 
 import HomePage from './pages/homepage/homepage.component';
 
@@ -13,6 +14,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

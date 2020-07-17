@@ -28,7 +28,7 @@ class Slideshow extends React.Component {
                 this.setState({slideNo: this.state.slideNo - 1})
             }
         };
-        // setInterval(this.nextSlide, 3000);
+        setInterval(this.nextSlide, 4000);
     }
     
     render(){

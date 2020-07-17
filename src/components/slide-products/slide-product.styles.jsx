@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import {CustomButton ,ImageContainer}  from '../style-utils/utils.styles'
+import {CustomButton ,ImageContainer}  from '../style-utils/utils.styles';
+
+import {fade} from '../style-utils/utils.styles';
 
 export const ProductSlide = styled.div`
     width: 100%;
@@ -12,6 +14,7 @@ export const ProductContainer = styled.div`
     margin: 2% 5%;
     display: flex;
     justify-content: space-between;
+    
    
 `;
 export const Product = styled.div`
@@ -28,6 +31,7 @@ export const Product = styled.div`
             
         }
     }
+    animation: 2s ${fade} ease-out;
 `;
 
 export const Button = styled(CustomButton)`
@@ -42,9 +46,10 @@ export const Image = styled(ImageContainer)`
 `;
 
 export const Arrows = styled.div`
+    opacity: ${props => props.opacity};
     cursor: pointer;
     position: relative;
-    top: 6em;
+    top: 7em;
     width: auto;
     height: 14%;
     font-size: 100%;

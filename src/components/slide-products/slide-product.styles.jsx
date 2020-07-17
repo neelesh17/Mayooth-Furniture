@@ -3,13 +3,13 @@ import {CustomButton ,ImageContainer}  from '../style-utils/utils.styles'
 
 export const ProductSlide = styled.div`
     width: 100%;
-    height: 400px;
+    height: auto;
 `;
 
 export const ProductContainer = styled.div`
     height: auto;
     width: 1600px;
-    margin: 10px 5%;
+    margin: 2% 5%;
     display: flex;
     justify-content: space-between;
    

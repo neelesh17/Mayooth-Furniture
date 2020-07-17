@@ -7,7 +7,7 @@ const SlideProducts = ({ heading, items }) => (
     <ProductSlide>
         <Text font="40px Raleway">{heading}</Text>
         <ProductContainer>
-            <Arrows><i class="ri-arrow-left-s-line ri-4x"></i></Arrows>
+            <Arrows><i className="ri-arrow-left-s-line ri-4x"></i></Arrows>
             {
                 items.map(Item => (
                         <Product>
@@ -18,7 +18,7 @@ const SlideProducts = ({ heading, items }) => (
                         </Product>
                     ))
             }
-            <Arrows><i class="ri-arrow-right-s-line ri-4x"></i></Arrows>
+            <Arrows><i className="ri-arrow-right-s-line ri-4x"></i></Arrows>
         </ProductContainer>
         
         

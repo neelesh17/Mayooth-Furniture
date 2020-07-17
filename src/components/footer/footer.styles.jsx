@@ -4,7 +4,7 @@ import { Text } from '../style-utils/utils.styles';
 
 export const FooterContainer = styled.div`
     width: 95%;
-    height: 194px;
+    height: auto;
     background-color: rgba(76, 179, 170, 1);
     display: flex;
     padding-left: 5%;

@@ -21,9 +21,9 @@ const Footer = () => (
             <FooterTextContainer font="16px Open Sans">Sizing Guide</FooterTextContainer>
         </FooterServiceContainer>
         <FooterIconContainer>
-            <i class="ri-facebook-fill ri-2x" ></i>
-            <i class="ri-instagram-line ri-2x"></i>
-            <i class="ri-twitter-fill ri-2x"></i>
+            <i className="ri-facebook-fill ri-2x" ></i>
+            <i className="ri-instagram-line ri-2x"></i>
+            <i className="ri-twitter-fill ri-2x"></i>
         </FooterIconContainer>
         <FooterLogoContainer>
             <Logo />

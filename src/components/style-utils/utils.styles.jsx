@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 export const CustomButton = styled.button`
     margin: 10px;
@@ -29,4 +29,13 @@ export const ImageContainer = styled.img`
     text-align: center;
     width: ${props => props.width};
     height: ${props => props.height};
+`;
+
+export const fade = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 `;

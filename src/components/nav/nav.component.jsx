@@ -12,7 +12,7 @@ import { CustomButton } from '../style-utils/utils.styles'
 const Navbar = () => (
     <NavContainer>
         <LogoContainer to="/">
-            <Logo classname="logo" />
+            <Logo className="logo" />
         </LogoContainer>
         <ButtonContainer>
             <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
@@ -21,9 +21,9 @@ const Navbar = () => (
             <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Contact Us</CustomButton>
         </ButtonContainer>
         <IconContainer>
-            <span ><i class="ri-search-2-line"></i></span>
-            <Icons to="/"><i class="ri-user-add-line"></i></Icons>
-            <Icons to="/"><i class="ri-shopping-cart-line"></i></Icons>
+            <span ><i className="ri-search-2-line"></i></span>
+            <Icons to="/"><i className="ri-user-add-line"></i></Icons>
+            <Icons to="/"><i className="ri-shopping-cart-line"></i></Icons>
         </IconContainer>
     </NavContainer>
 );

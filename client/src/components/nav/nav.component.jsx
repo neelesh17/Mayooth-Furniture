@@ -5,7 +5,7 @@ import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option3.svg';
 
 import {  
     NavContainer, LogoContainer, IconContainer,
-     ButtonContainer,Icons 
+     ButtonContainer, Icons 
 } from './nav.styles';
 
 import { CustomButton } from '../style-utils/utils.styles'
@@ -16,10 +16,18 @@ const Navbar = () => (
             <Logo className="logo" />
         </LogoContainer>
         <ButtonContainer>
-            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
-            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Kitchen&Dinner</CustomButton>
-            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Bedroom</CustomButton>
-            <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Contact Us</CustomButton>
+            <Link to="/livingroom">
+                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
+            </Link>
+            <Link to="/kitchendinner">
+                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Kitchen&Dinner</CustomButton>
+            </Link>
+            <Link to="/bedroom">
+                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Bedroom</CustomButton>
+            </Link>
+            <Link to="/contactus">
+                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Contact Us</CustomButton>
+            </Link>
         </ButtonContainer>
         <IconContainer>
             <span ><i className="ri-search-2-line"></i></span>

@@ -5,4 +5,6 @@ export const HomePageContainer = styled.div `
   flex-direction: column;
   align-items: center;
   background-color: #EDF1F3;
+  margin: 0;
+  width: 100%
 `;

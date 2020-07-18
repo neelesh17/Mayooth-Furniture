@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { ProductSlide ,Image, ProductContainer, Product, Button, Arrows } from './slide-product.styles';
+import Product from '../product/product.component';
+
+import { ProductSlide , ProductContainer, Arrows } from './slide-product.styles';
 import { Text } from '../style-utils/utils.styles';
 
 class SlideProducts extends React.Component{
@@ -42,12 +44,7 @@ class SlideProducts extends React.Component{
                     <Arrows opacity={this.state.from === 0 ? "0" : "1"}><i className="ri-arrow-left-s-line ri-4x" onClick={this.prev}></i></Arrows>
                     {
                         this.state.items.filter((item, id) => (id >= this.state.from && id < this.state.to)).map(Item => (
-                                <Product>
-                                    <Image src={Item.image} height="286px" width="100%" />
-                                    <Text font="16px Open Sans">{Item.name}</Text>
-                                    <Text font="16px Open Sans">{Item.price}</Text>
-                                    <Button color="rgba(255, 255, 255, 1)" backgroundColor="rgba(204, 76, 110, 1)">Shop</Button>
-                                </Product>
+                                <Product Item={Item} />
                             ))
                     }
                     <Arrows opacity={this.state.to >= this.state.items.length ? "0" : "1"} ><i className="ri-arrow-right-s-line ri-4x" onClick={this.next}></i></Arrows>

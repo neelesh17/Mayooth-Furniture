@@ -3,6 +3,7 @@ import styled, {keyframes} from 'styled-components';
 export const CustomButton = styled.button`
     margin: 10px;
     padding: 0;
+    cursor: pointer;
     border: none;
     width: 133px;
     height: 40px;
@@ -14,7 +15,7 @@ export const CustomButton = styled.button`
     color: ${props => props.color};
     background-color: ${props => props.backgroundColor};
     box-shadow:  0 1px 3px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    
 `;
 
 export const Text = styled.p`

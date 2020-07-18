@@ -7,7 +7,7 @@ export const InspirationContainer = styled.div`
     height: 500px;
     display: flex;
     justify-content: center;
-    padding: 3% 0;
+    padding-bottom: 3%;
 `;
 
 export const TextContainer = styled.div`

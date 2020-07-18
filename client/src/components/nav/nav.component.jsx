@@ -16,13 +16,13 @@ const Navbar = () => (
             <Logo className="logo" />
         </LogoContainer>
         <ButtonContainer>
-            <Link to="/livingroom">
+            <Link to="/shop/livingroom">
                 <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
             </Link>
-            <Link to="/kitchendinner">
+            <Link to="/shop/kitchendinner">
                 <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Kitchen&Dinner</CustomButton>
             </Link>
-            <Link to="/bedroom">
+            <Link to="/shop/bedroom">
                 <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Bedroom</CustomButton>
             </Link>
             <Link to="/contactus">

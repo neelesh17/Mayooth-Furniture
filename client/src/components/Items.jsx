@@ -12,7 +12,7 @@ import image4 from '../images/Image4.png';
 import image5 from '../images/Image5.png';
 import image6 from '../images/Image6.png';
 
-export const    NewItems = [{
+export const  NewItems = [{
         id: 1,
         image: product1,
         name: "White and Brown Sideboard",
@@ -53,24 +53,6 @@ export const    NewItems = [{
         image: product7,
         name: "Bule Office Comfort Chair",
         price: "$130"
-    },
-    {
-        id: 8,
-        image: product8,
-        name: "Stylish White Chair",
-        price: "$60"
-    },
-    {
-        id: 9,
-        image: product9,
-        name: "Relaxing White chair",
-        price: "$70"
-    },
-    {
-        id: 10,
-        image: product10,
-        name: "Royal Bule Sofa Chair",
-        price: "$100"
     }
 ];
 
@@ -94,19 +76,19 @@ export const ClearenceItems = [{
     },
     {
         id: 4,
-        image: product4,
+        image: product8,
         name: "Old Style Wooden Chair",
         price: "$150"
     },
     {
         id: 5,
-        image: product5,
+        image: product9,
         name: "Pink Soaf Chair",
         price: "$120"
     },
     {
         id: 6,
-        image: product6,
+        image: product10,
         name: "Mehroon Comfort Chair",
         price: "$190"
     },
@@ -115,23 +97,5 @@ export const ClearenceItems = [{
         image: product7,
         name: "Bule Office Comfort Chair",
         price: "$130"
-    },
-    {
-        id: 8,
-        image: product8,
-        name: "Stylish White Chair",
-        price: "$60"
-    },
-    {
-        id: 9,
-        image: product9,
-        name: "Relaxing White chair",
-        price: "$70"
-    },
-    {
-        id: 10,
-        image: product10,
-        name: "Royal Bule Sofa Chair",
-        price: "$100"
     }
 ];

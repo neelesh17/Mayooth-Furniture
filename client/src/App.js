@@ -6,6 +6,7 @@ import Footer from './components/footer/footer.component';
 
 import HomePage from './pages/homepage/homepage.component';
 import CollectionPage from './pages/collectionpage/collectionpage.component';
+import ContactUs from './pages/contactus/contactus.component';
 
 const App = () => {
   return (
@@ -13,10 +14,10 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} /> 
-        <Route exact path="/livingroom" component={CollectionPage} /> 
-        <Route exact path="/kitchendinner" component={CollectionPage} /> 
-        <Route exact path="/bedroom" component={CollectionPage} /> 
-        <Route exact path="/contactus" component={CollectionPage} /> 
+        <Route exact path="/shop/livingroom" component={CollectionPage} /> 
+        <Route exact path="/shop/kitchendinner" component={CollectionPage} /> 
+        <Route exact path="/shop/bedroom" component={CollectionPage} /> 
+        <Route exact path="/contactus" component={ContactUs} /> 
       </Switch>
       <Footer />
     </div>

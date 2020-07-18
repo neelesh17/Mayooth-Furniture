@@ -9,18 +9,17 @@ export const ProductSlide = styled.div`
 `;
 
 export const ProductContainer = styled.div`
-    height: auto;
+    height: 350px;
     width: 1600px;
     margin: 2% 5%;
     display: flex;
-    justify-content: space-between;
-    
-   
+    justify-content: end;
 `;
 export const Product = styled.div`
     height: 100%;
     width: 429px;
-    text-align: center;
+    text-align: start;
+    margin: 0 3%;
     &:hover {
         img{
             opacity: 0.7;
@@ -28,7 +27,6 @@ export const Product = styled.div`
         button {
             opacity: 0.85;
             display: inline-block;
-            
         }
     }
     animation: 2s ${fade} ease-out;

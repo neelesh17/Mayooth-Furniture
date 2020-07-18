@@ -28,7 +28,6 @@ const Footer = () => (
         <FooterLogoContainer>
             <Logo />
         </FooterLogoContainer>
-        
     </FooterContainer>
 );
 

@@ -26,17 +26,16 @@ export const FooterTextContainer = styled(Text)`
 export const FooterIconContainer = styled.div`
     height: 30px;
     position: relative;
-    top: 10%;
+    top: 1em;
     left: 40%;
     font-size: 100%;
     color: white;
-   
     cursor:pointer;
 `;
 
 export const FooterLogoContainer = styled.div`
     height: 50%;
     position: relative;
-    top: 45%;
+    top: 5em;
     left: 33%;
 `;

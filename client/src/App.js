@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route} from 'react-router-dom'
 
 import Navbar from './components/nav/nav.component';
 import Footer from './components/footer/footer.component';
@@ -12,7 +12,7 @@ const App = () => {
     <div >
       <Navbar />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={HomePage} /> 
       </Switch>
       <Footer />
     </div>

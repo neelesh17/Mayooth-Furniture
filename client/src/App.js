@@ -7,7 +7,8 @@ import Footer from './components/footer/footer.component';
 import HomePage from './pages/homepage/homepage.component';
 import CollectionPage from './pages/collectionpage/collectionpage.component';
 import ContactUs from './pages/contactuspage/contactus.component';
-import SigninAndSignupPage from './pages/signin&signup-page/signin-signup.component';
+import Signin from './components/sign-in/sign-in.component';
+import Signup from './components/sign-up/sign-up.component';
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
         <Route exact path="/shop/kitchendinner" component={CollectionPage} /> 
         <Route exact path="/shop/bedroom" component={CollectionPage} /> 
         <Route exact path="/contactus" component={ContactUs} />
-        <Route exact path="/signup" component={SigninAndSignupPage} />   
+        <Route exact path="/login" component={Signin} />
+        <Route exact path="/signup" component={Signup} />   
       </Switch>
       <Footer />
     </div>

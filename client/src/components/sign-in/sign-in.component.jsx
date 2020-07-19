@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import {Link}from 'react-router-dom';
+import {withRouter}from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option2.svg';
 
 import FormInput from '../form-input/form-input.component';
 
-import { SignUpContainer, FormContainer, LogoContainer } from './sign-in.styles';
+import { SignUpContainer, FormContainer, LogoContainer, TextContainer } from './sign-in.styles';
 import { Text, CustomButton } from '../style-utils/utils.styles';
 
 
-const SignIn = () => {
+const SignIn = ({history}) => {
     const [ userCredentials, setCredentials ] = useState({
         email: '',
         password: '',
@@ -24,6 +24,10 @@ const SignIn = () => {
     return(
         <SignUpContainer>
             <FormContainer>
+                <TextContainer>
+                    <Text font="Bold 24px Open Sans" onClick={() => history.push('/signup')}>SIGN UP</Text>
+                    <Text font="Bold 24px Open Sans" className="active">LOGIN</Text>  
+                </TextContainer>
                 <FormInput 
                     type="email"
                     name="email"
@@ -57,4 +61,4 @@ const SignIn = () => {
         </SignUpContainer>
 )};
 
-export default SignIn;
+export default withRouter(SignIn);

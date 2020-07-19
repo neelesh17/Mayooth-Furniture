@@ -32,7 +32,7 @@ const Navbar = () => (
         <IconContainer>
             <span ><i className="ri-search-2-line"></i></span>
             <Icons to="/signup"><i className="ri-user-add-line"></i></Icons>
-            <Icons to="/"><i className="ri-shopping-cart-line"></i></Icons>
+            <Icons to="/customer/checkout"><i className="ri-shopping-cart-line"></i></Icons>
         </IconContainer>
     </NavContainer>
 );

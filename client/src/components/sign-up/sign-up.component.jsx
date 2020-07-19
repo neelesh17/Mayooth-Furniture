@@ -67,13 +67,13 @@ const SignUp = () => {
                     label="Confirm Password"
                     required
                 />
-                <div>
+                <div style={{padding: "10px 0"}}>
                     <input type="radio" name="terms" className="input" />
                     <label for="terms" className="input">
                         I Agree with the <Link>Terms & Conditions</Link> of Maynooth Furniture
                     </label>
                 </div>
-                <div>
+                <div  style={{padding: "10px 0"}}>
                     <input className="input" type="checkbox" name="remember" />
                     <label className="input" for="remember">Remember me</label>
                 </div>

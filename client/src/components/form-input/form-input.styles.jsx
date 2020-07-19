@@ -49,7 +49,7 @@ export const FormInputContainer = styled.input`
     padding: 1% 1% 1% 1%;
     display: block;
     width: 100%;
-    height: 3em;
+    height: 2em;
     border: none;
     border-radius: 8px;
     box-shadow: 0px 5px 10px #00000029;

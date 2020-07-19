@@ -5,8 +5,8 @@ export const CustomButton = styled.button`
     padding: 0;
     cursor: pointer;
     border: none;
-    width: 133px;
-    height: 40px;
+    width: ${props => props.width ? props.width : "133px"};
+    height: ${props => props.height ? props.height : "40px"};
     border-radius: 4px;
     text-align: center;
     line-height: 40px;
@@ -20,7 +20,7 @@ export const CustomButton = styled.button`
 
 export const Text = styled.p`
     font: ${props => props.font};
-    color: #060606;
+    color: ${ props => props.color ? props.color : "#060606" };
     text-shadow: 0px 1px 3px #00000063;
     margin: 0;
     text-align: center;

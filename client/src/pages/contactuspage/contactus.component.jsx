@@ -22,8 +22,7 @@ const ContactUs = () => {
     }
 
     return(
-    <ContactUsContainer>
-        
+    <ContactUsContainer> 
         <Form>
             <FormContainer>
                 <div style={{width: "50%"}}>

@@ -12,11 +12,20 @@ import image4 from '../images/Image4.png';
 import image5 from '../images/Image5.png';
 import image6 from '../images/Image6.png';
 
+export const  ProductItem = {
+    id: 1,
+    image: product1,
+    name: "White and Brown Sideboard",
+    price: "$50",
+    company: "Scott",
+    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
+}
+
 export const  NewItems = [{
         id: 1,
         image: product1,
         name: "White and Brown Sideboard",
-        price: "$50"
+        price: "$50",
     },
     {
         id: 2,

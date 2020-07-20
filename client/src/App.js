@@ -10,6 +10,7 @@ import ContactUs from './pages/contactuspage/contactus.component';
 import Signin from './components/sign-in/sign-in.component';
 import Signup from './components/sign-up/sign-up.component';
 import CheckoutPage from './pages/checkoutpage/checkout.component';
+import ProductPage from './pages/productpage/productpage.component';
 
 const App = () => {
   return (
@@ -23,7 +24,8 @@ const App = () => {
         <Route exact path="/contactus" component={ContactUs} />
         <Route exact path="/customer/checkout" component={CheckoutPage} />
         <Route exact path="/login" component={Signin} />
-        <Route exact path="/signup" component={Signup} />   
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/product" component={ProductPage} />   
       </Switch>
       <Footer />
     </div>

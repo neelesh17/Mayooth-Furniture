@@ -2,22 +2,23 @@ import styled from 'styled-components';
 import {Text} from '../../components/style-utils/utils.styles';
 
 export const CheckoutPageContainer = styled.div`
-    width: 55%;
+    width: 75%;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 50px auto 0;
-    ${Text} {
-        margin-top: 40px;
-    }
     .total{
         margin-left: auto;
     }
     button{
-    margin-left: auto;
-    margin-top: 50px;
+        margin-left: auto;
+        margin-top: 50px;
     }
+    #heading{
+        margin-bottom: 1em;
+    }
+    padding-bottom: 10em;
 `;
 
 export const CheckoutHeaderContainer = styled.div`
@@ -30,14 +31,9 @@ export const CheckoutHeaderContainer = styled.div`
 
 export const HeaderBlock = styled(Text)`
     text-transform: capitalize;
-    text-align: left;
+    text-align: center;
     width: 23%;
     &:last-child {
-    width: 8%;
+        width: 8%;
     }
-`;
-
-export const TestWarningContainer = styled(Text)`
-   
-    color: red;
 `;

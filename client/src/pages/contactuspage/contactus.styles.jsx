@@ -6,6 +6,7 @@ export const ContactUsContainer = styled.div`
     background-color: #EDF1F3;
     margin: 0;
     width: 100%;
+    padding-bottom: 3em;
 `; 
 
 export const Form = styled.form`
@@ -18,7 +19,7 @@ export const Form = styled.form`
 
 export const FormContainer = styled.div`
     display: flex;
-    justify-content: start;
+    justify-content: start; 
 `;
 
 export const LogoContainer = styled.div`

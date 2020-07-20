@@ -3,7 +3,11 @@ import React, {useState} from 'react';
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option2.svg';
 
 import FormInput from '../../components/form-input/form-input.component';
-import  {ContactUsContainer, LogoContainer,  Form, TextContainer, FormContainer} from './contactus.styles';
+import FormTextArea from  '../../components/form-input/form-textarea.component';
+
+import  {ContactUsContainer, LogoContainer,  Form, 
+    TextContainer, FormContainer} from './contactus.styles';
+import {CustomButton, Text} from '../../components/style-utils/utils.styles';
 
 const ContactUs = () => {
     const [ messageCredentials, setCredentials ] = useState({
@@ -23,7 +27,7 @@ const ContactUs = () => {
 
     return(
     <ContactUsContainer> 
-        <Form>
+        <Form id="contactus">
             <FormContainer>
                 <div style={{width: "50%"}}>
                     <FormInput type="text"
@@ -63,13 +67,17 @@ const ContactUs = () => {
                     </LogoContainer>
                 </div>
             </FormContainer>
-            <FormInput type="text"
+            <FormTextArea type="text"
                 name="message"
                 value={message}
                 handleChange={handleChange}
                 label="Message"
+                form="contactus"
                 required
             />
+            <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  type="submit" width="20em" height="4em">
+                    <Text color="rgba(255, 255, 255, 1)" font="30px Raleway">Submit</Text>
+            </CustomButton>
         </Form>
     </ContactUsContainer>
     )

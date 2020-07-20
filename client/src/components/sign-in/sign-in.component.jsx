@@ -48,7 +48,7 @@ const SignIn = ({history}) => {
                     <input className="input" type="checkbox" name="remember" />
                     <label className="input" for="remember">Remember me</label>
                 </div>
-                <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  width="20em" height="4em">
+                <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  type="submit" width="20em" height="4em">
                     <Text color="rgba(255, 255, 255, 1)" font="30px Raleway">Sign In</Text>
                 </CustomButton>
             </FormContainer>

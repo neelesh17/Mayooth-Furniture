@@ -4,7 +4,7 @@ import{fade, Text} from '../style-utils/utils.styles';
 export const SignUpContainer = styled.div`
     display: flex;
     justify-content: center;
-    padding: 5em;
+    padding: 9em;
 `;
 
 export const FormContainer = styled.form`

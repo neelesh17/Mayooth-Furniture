@@ -42,7 +42,7 @@ const SignUp = ({history}) => {
                 />
                 <FormInput 
                     type="number"
-                    name="numer"
+                    name="number"
                     value={number}
                     handleChange={handleChange}
                     label="Phone Number"
@@ -66,14 +66,14 @@ const SignUp = ({history}) => {
                 />
                 <FormInput 
                     type="password"
-                    name="confirm password"
+                    name="confirmPassword"
                     value={confirmPassword}
                     handleChange={handleChange}
                     label="Confirm Password"
                     required
                 />
                 <div style={{padding: "10px 0"}}>
-                    <input type="radio" name="terms" className="input" />
+                    <input type="radio" name="terms" className="input" required/>
                     <label for="terms" className="input">
                         I Agree with the <Link>Terms & Conditions</Link> of Maynooth Furniture
                     </label>
@@ -82,7 +82,7 @@ const SignUp = ({history}) => {
                     <input className="input" type="checkbox" name="remember" />
                     <label className="input" for="remember">Remember me</label>
                 </div>
-                <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  width="20em" height="4em">
+                <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  type="submit" width="20em" height="4em">
                     <Text color="rgba(255, 255, 255, 1)" font="30px Raleway">Sign Up</Text>
                 </CustomButton>
             </FormContainer>

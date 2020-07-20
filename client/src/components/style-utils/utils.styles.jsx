@@ -15,7 +15,7 @@ export const CustomButton = styled.button`
     color: ${props => props.color};
     background-color: ${props => props.backgroundColor};
     box-shadow:  0 1px 3px rgba(0, 0, 0, 0.2);
-    
+    outline: none;
 `;
 
 export const Text = styled.p`

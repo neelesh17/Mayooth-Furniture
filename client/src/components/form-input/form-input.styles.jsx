@@ -20,10 +20,6 @@ export const GroupContainer = styled.div`
         -webkit-appearance: none; 
         margin: 0; 
     }
-    input[name="message"]{
-        width: 1312px;
-        height: 220px;
-    }
 `;
 
 export const FormInputLabel = styled.label`
@@ -58,6 +54,26 @@ export const FormInputContainer = styled.input`
         outline: none;
     }
 
+    &:focus ~ .label {
+        ${ShrinkLabelStyles};
+    }
+`;
+
+export const FormTextAreaContainer = styled.textarea`
+    background: none;
+    background-color: white;
+    color: "black";
+    font-size: 18px;
+    padding: 1% 1% 1% 1%;
+    display: block;
+    width: 65em;
+    height: 13em;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px #00000029;
+    resize: none;
+    margin-bottom: 2em;
+    outline: none;
     &:focus ~ .label {
         ${ShrinkLabelStyles};
     }

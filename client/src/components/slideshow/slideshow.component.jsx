@@ -28,8 +28,10 @@ class Slideshow extends React.Component {
                 this.setState({slideNo: this.state.slideNo - 1})
             }
         };
-        setInterval(this.nextSlide, 4000);
+        
     }
+    componentDidMount(){this.interval = setInterval(this.nextSlide, 5000);}
+    componentWillUnmount(){clearInterval(this.interval)};
     
     render(){
         return(

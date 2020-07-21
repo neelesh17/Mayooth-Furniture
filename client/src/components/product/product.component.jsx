@@ -7,7 +7,7 @@ import {Text} from '../../components/style-utils/utils.styles';
 
 
 const Product = ({Item, history}) => (
-    <ProductContainer>
+    <ProductContainer >
         <Image src={Item.image} height="286px" width="100%" />
         <Text font="16px Open Sans">{Item.name}</Text>
         <Text font="16px Open Sans">{Item.price}</Text>

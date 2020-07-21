@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, {keyframes } from 'styled-components';
 
-import { fade } from '../../../style-utils/utils.styles';
-
+export const slide = keyframes`
+    0%{left: 20em;}
+    100% { left: 14em; }
+`;
 
 export const TextConatiner = styled.div`
     padding: 48px 0 0 0;
@@ -14,5 +16,7 @@ export const SlideContainer = styled.div`
     display: ${props => props.display};
     justify-content:space-around;
     width: 1366px;
-    animation: 2s ${fade} ease-out;
+    position: absolute;
+    
+    animation: ${slide} 1s forwards;
 `;

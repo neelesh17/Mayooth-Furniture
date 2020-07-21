@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import {fade} from '../style-utils/utils.styles';
+
 
 export const ProductSlide = styled.div`
     width: 100%;
@@ -7,10 +9,11 @@ export const ProductSlide = styled.div`
 
 export const ProductContainer = styled.div`
     height: auto;
-    width: 1600px;
+    width: fit-content;
     margin: 2% 5%;
     display: flex;
-    justify-content: end;
+    justify-content: start;
+    animation: 1s ${fade} ease-out;
 `;
 
 export const Arrows = styled.div`
@@ -24,4 +27,7 @@ export const Arrows = styled.div`
     color: rgba(112, 112, 112, 1);
     user-select: none;
     transition: 0.4s ease;
+    &.next{
+        left: 100em; 
+    }
 `;

@@ -1,20 +1,11 @@
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 import { fade, CustomButton, ImageContainer } from '../style-utils/utils.styles';
 
-const slide = keyframes`
-    0%{
-      transform: translate3d(0, 0, 0);
-    }
-    100%{
-      transform: translate3d(-1692px, 0, 0);
-    }
-`;
-
 export const ProductContainer = styled.div`
-    width: 32em;    
+    width: 28em;    
     height: auto;
-    margin:0 3%;
-    display: block;
+    display: inline-block;
+    margin: 0 3%;
     &:hover {
         img{
             opacity: 0.7;

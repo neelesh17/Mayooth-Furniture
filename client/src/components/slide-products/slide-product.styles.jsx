@@ -9,7 +9,7 @@ export const ProductSlide = styled.div`
 
 export const ProductContainer = styled.div`
     height: auto;
-    width: fit-content;
+    width: 105em;
     margin: 2% 5%;
     display: flex;
     justify-content: start;

@@ -6,13 +6,14 @@ import { ProductSlide , ProductContainer, Arrows } from './slide-product.styles'
 import { Text } from '../style-utils/utils.styles';
 
 class SlideProducts extends React.Component{
-    constructor({ heading, items }){
+    constructor({ heading, items, type }){
         super();
         this.state = {
             heading: heading,
             items: items,
             from: 0,
             to: 3,
+            type: type,
         }
         this.prev = () => {
             if(this.state.to - this.state.from < 3){
@@ -43,8 +44,8 @@ class SlideProducts extends React.Component{
                 <ProductContainer>
                     <Arrows opacity={this.state.from === 0 ? "0" : "1"}><i className="ri-arrow-left-s-line ri-4x" onClick={this.prev}></i></Arrows>
                     {
-                        this.state.items.filter((item, id) => (id >= this.state.from && id < this.state.to)).map(Item => (
-                                <Product Item={Item} />
+                        this.state.items.filter((item, id) => (item.type === this.state.type)).map(item => (
+                                <Product Item={item} />
                             ))
                     }
                     <Arrows opacity={this.state.to >= this.state.items.length ? "0" : "1"} ><i className="ri-arrow-right-s-line ri-4x" onClick={this.next}></i></Arrows>

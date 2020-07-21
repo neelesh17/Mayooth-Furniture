@@ -1,5 +1,4 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
 
 import { CollectionPageContainer, ProductContainer} from './collectionpage.styles';
 import Product from '../../components/product/product.component';
@@ -7,9 +6,8 @@ import {Text} from '../../components/style-utils/utils.styles';
 
 import {NewItems} from '../../components/Items';
 
-const CollectionPage = ({match}) => (
+const CollectionPage = () => (
     <CollectionPageContainer>
-                {console.log(match)}
                 <Text font="40px Raleway">Living Room</Text>
                 <ProductContainer>
                     {
@@ -21,4 +19,4 @@ const CollectionPage = ({match}) => (
     </CollectionPageContainer>
 );
 
-export default withRouter(CollectionPage);
+export default CollectionPage;

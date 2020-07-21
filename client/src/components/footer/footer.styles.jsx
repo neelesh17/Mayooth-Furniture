@@ -21,7 +21,9 @@ export const FooterTextContainer = styled(Text)`
     text-align: left;
     &.heading {
         padding-bottom: 16px;
+        cursor: auto;
     }
+    cursor: pointer;
 `;
 export const FooterIconContainer = styled.div`
     height: 30px;

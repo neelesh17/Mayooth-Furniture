@@ -1,21 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Slideshow from '../../components/slideshow/slideshow.component';
 import SlideProducts from '../../components/slide-products/slide-product.component';
 import InspirationProduct from '../../components/inspiration/inspiration.component';
 
-import {HomePageContainer} from './homepage.styles'
+import { selectHomepageitems } from '../../redux/homepage/homepage.selector';
+import { HomePageContainer } from './homepage.styles'
 
-import { NewItems, ClearenceItems } from '../../components/Items';
-
-const HomePage = () => (
+const HomePage = ({items}) => (
     <HomePageContainer>
         <Slideshow />
-        <SlideProducts items={NewItems} heading="New In Store"/>
+        <SlideProducts items={items} type="new" heading="New In Store"/>
         <InspirationProduct />
-        <SlideProducts items={ClearenceItems} heading="Clearence Deals"/>
+        <SlideProducts items={items} type="clearence" heading="Clearence Deals"/>
     </HomePageContainer>
 );
 
+const mapStateToProps = createStructuredSelector ({
+    items: selectHomepageitems,
+})
 
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);

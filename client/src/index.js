@@ -10,12 +10,12 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <PersistGate persistor={ persistor }>
-        <App />
-      </PersistGate>
-    </BrowserRouter>
-  </Provider>,
+        <BrowserRouter>
+            <PersistGate persistor= { persistor }> 
+                <App />
+            </PersistGate>
+        </BrowserRouter>
+    </Provider>,
   document.getElementById('root')
 );
 

@@ -8,8 +8,8 @@ import cartReducer from './cart/cart.reducer';
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ['cart'],
-}
+    blacklist: ['cart'],
+};
 
 const rootReducer = combineReducers({
     homepage: homepageReducer,

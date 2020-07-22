@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { slide } from '../slide1/slide1.styles';
+import {fade} from '../../../style-utils/utils.styles'
 
 export const TextConatiner = styled.div`
     padding: 48px 0 0 0;
@@ -15,7 +15,5 @@ export const SlideContainer = styled.div`
     height: 95%;
     // background-image: radial-gradient(#eeaeca, #94bbe9);
     background-color: #e3e3e3;
-    position: absolute;
-    height: 40%;
-    animation: ${slide} 1s forwards;
+    animation: ${fade} 1s forwards;
 `;

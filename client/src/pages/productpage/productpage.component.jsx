@@ -1,20 +1,31 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
+
+import {addItem} from '../../redux/cart/cart.actions';
 
 import { ProductPageContainer, TextContainer, DesciptionContainer, 
     ProductContainer, RelatedProductContainer, QuantityContainer
  } from './productpage.styles';
 import {ImageContainer, Text, CustomButton} from '../../components/style-utils/utils.styles';
-
 import {ProductItem, NewItems} from '../../components/Items';
 import SlideProducts from '../../components/slide-products/slide-product.component';
 
-const ProductPage = () => {
+const ProductPage = ({addItem}) => {
     const {name, image, description, price, company} = ProductItem[0];
-    let [User, setQuantity] = useState({
-        quantity: 1,
-    });
+    ProductItem[0].quantity =0;
 
-    const {quantity} = User;
+    let [User, setQuantity] = useState({
+        quan: 1,
+        clicked: 'no',
+    });
+    
+    const {quan, clicked} = User;
+
+    const handleClick = () => {
+        setQuantity({...User, clicked: 'yes'})
+        ProductItem[0].quantity = quan;
+        addItem(ProductItem[0])
+    }
     return(
     <ProductPageContainer>
         <ProductContainer>
@@ -33,15 +44,15 @@ const ProductPage = () => {
                 </div>
                 <Text font="24px/29px Raleway">{price}</Text>
                 <QuantityContainer>
-                    <i class="ri-subtract-line" onClick={() => {if(quantity>1) setQuantity({quantity: quantity-1})}}/>
-                    <span>{quantity}</span>
-                    <i class="ri-add-line" onClick={() => setQuantity({quantity: quantity +1 })}/>
+                    <i className="ri-subtract-line" onClick={() => {if(quan>1) setQuantity({...User, quan: quan-1})}}/>
+                    <span>{quan}</span>
+                    <i className="ri-add-line" onClick={() => setQuantity({quan: quan +1 })}/>
                 </QuantityContainer>
-                <CustomButton backgroundColor="rgba(255, 255, 255, 1)" color="rgba(39, 149, 76, 1)" width="10em" height="2.7em">
-                    <i class="ri-add-circle-line ri-xl"></i>Add To Cart
+                <CustomButton onClick={handleClick} backgroundColor="rgba(255, 255, 255, 1)" color="rgba(39, 149, 76, 1)" width="10em" height="2.7em">
+                    {clicked==='yes'? <i className="ri-checkbox-circle-line ri-xl"></i> :<i className="ri-add-circle-line ri-xl"></i> }Add To Cart
                 </CustomButton>
                 <CustomButton backgroundColor="rgba(255, 255, 255, 1)" color="rgba(6, 6, 6, 1)" width="10em" height="2.7em">
-                    <i class="ri-heart-line ri-xl"></i>Wishlist
+                    <i className="ri-heart-line ri-xl"></i>Wishlist
                 </CustomButton>
             </TextContainer>
         </ProductContainer>
@@ -51,4 +62,8 @@ const ProductPage = () => {
     </ProductPageContainer>
 )};
 
-export default ProductPage;
+const mapDispatchToProps = dispatch => ({
+    addItem: item => dispatch(addItem(item))
+});
+
+export default connect(null, mapDispatchToProps)(ProductPage);

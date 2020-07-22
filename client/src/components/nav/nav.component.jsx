@@ -15,7 +15,6 @@ import { CustomButton } from '../style-utils/utils.styles'
 
 import Cart from '../cart/cart.component';
 import CartDropdown from '../cart-dropdown/cart.dropdown.component';
-import {ProductItem} from '../Items';
 
 const Navbar = ({hidden}) => (
     <NavContainer>
@@ -41,7 +40,7 @@ const Navbar = ({hidden}) => (
             <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
             <Cart />
         </IconContainer>
-        {hidden? null : <CartDropdown cartItems={ProductItem}/>}
+        {hidden ? null : <CartDropdown />}
     </NavContainer>
 );
 

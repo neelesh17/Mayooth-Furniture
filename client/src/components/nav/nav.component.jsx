@@ -10,6 +10,10 @@ import {
 
 import { CustomButton } from '../style-utils/utils.styles'
 
+import Cart from '../cart/cart.component';
+import CartDropdown from '../cart-dropdown/cart.dropdown.component';
+import {ProductItem} from '../Items';
+
 const Navbar = () => (
     <NavContainer>
         <LogoContainer to="/">
@@ -30,9 +34,10 @@ const Navbar = () => (
             </Link>
         </ButtonContainer>
         <IconContainer>
-            <span ><i className="ri-search-2-line"></i></span>
-            <Icons to="/signup"><i className="ri-user-add-line"></i></Icons>
-            <Icons to="/customer/checkout"><i className="ri-shopping-cart-line"></i></Icons>
+            <span className="search"><i className="ri-search-2-line"></i></span>
+            <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
+            <Cart />
+            <CartDropdown cartItems={ProductItem}/>
         </IconContainer>
     </NavContainer>
 );

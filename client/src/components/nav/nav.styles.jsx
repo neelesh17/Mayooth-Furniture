@@ -29,10 +29,10 @@ export const IconContainer = styled.div`
     padding: 15px 30px;
     justify-content: flex-end;
     color: white;
-    i{
-        padding: 0 0 0 15px;
+    .icon{
+        padding: 0 15px 0 15px;
     }
-    span{
+    .search{
         height: 45px;
         width: 45px;
         background-color: rgba(255,255,255,1);

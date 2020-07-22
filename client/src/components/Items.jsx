@@ -1,11 +1,11 @@
-export const  ProductItem = {
+export const  ProductItem = [{
     id: 1,
     image: '/images/product1.png',
     name: "White and Brown Sideboard",
     price: "$50",
     company: "Scott",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
-}
+}];
 
 export const  NewItems = [{
         id: 1,

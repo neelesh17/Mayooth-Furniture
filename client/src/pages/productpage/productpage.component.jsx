@@ -9,7 +9,7 @@ import {ProductItem, NewItems} from '../../components/Items';
 import SlideProducts from '../../components/slide-products/slide-product.component';
 
 const ProductPage = () => {
-    const {name, image, description, price, company} = ProductItem;
+    const {name, image, description, price, company} = ProductItem[0];
     let [User, setQuantity] = useState({
         quantity: 1,
     });

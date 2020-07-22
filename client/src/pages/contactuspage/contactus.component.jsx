@@ -16,19 +16,19 @@ const ContactUs = () => {
         number: '',
         subject: '',
         message:''
-    })
+    });
 
     const {name, email, number, subject, message } = messageCredentials;
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setCredentials({...messageCredentials, [name] : value});
-    }
+    };
 
     return(
     <ContactUsContainer> 
         <Form id="contactus">
-            <FormContainer>
+            <FormContainer >
                 <div style={{width: "50%"}}>
                     <FormInput type="text"
                         name="name"

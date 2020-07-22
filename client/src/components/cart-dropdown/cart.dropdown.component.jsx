@@ -26,12 +26,12 @@ const CartDropdown = ({cartItems, history}) => (
                 )) 
                 ) : <EmptyMessageContainer>Your Cart Is Empty</EmptyMessageContainer>
             }
+            <CartDropdownButton color="white" backgroundColor="rgba(204, 76, 110, 1)" width="13em" height="auto" onClick={() => {
+                history.push("/checkout");
+            }}>
+                GO TO CHECKOUT
+            </CartDropdownButton>
         </CartItemsContainer>
-        <CartDropdownButton color="white" backgroundColor="rgba(204, 76, 110, 1)" width="13em" height="auto" onClick={() => {
-            history.push("/checkout");
-        }}>
-            GO TO CHECKOUT
-        </CartDropdownButton>
     </CartDropdownContainer>
 );
 

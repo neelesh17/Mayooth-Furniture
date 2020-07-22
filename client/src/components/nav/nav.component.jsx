@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
+import {selectCartHidden} from '../../redux/cart/cart.selector';
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option3.svg';
 
 import {  
@@ -14,7 +17,7 @@ import Cart from '../cart/cart.component';
 import CartDropdown from '../cart-dropdown/cart.dropdown.component';
 import {ProductItem} from '../Items';
 
-const Navbar = () => (
+const Navbar = ({hidden}) => (
     <NavContainer>
         <LogoContainer to="/">
             <Logo className="logo" />
@@ -37,9 +40,13 @@ const Navbar = () => (
             <span className="search"><i className="ri-search-2-line"></i></span>
             <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
             <Cart />
-            <CartDropdown cartItems={ProductItem}/>
         </IconContainer>
+        {hidden? null : <CartDropdown cartItems={ProductItem}/>}
     </NavContainer>
 );
 
-export default Navbar;
+const mapStateToProps = createStructuredSelector({
+    hidden: selectCartHidden,
+});
+
+export default connect(mapStateToProps)(Navbar);

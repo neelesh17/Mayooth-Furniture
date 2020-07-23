@@ -31,7 +31,7 @@ const SlideProducts = ({ heading, items, type }) => {
                 >
                     {
                         filteredItems.map(item => (
-                                <Product key={item.id} Item={item} dis="inline-block"/>
+                                <Product key={item.id} item={item} dis="inline-block"/>
                             ))
                     }
                 </Whirligig>

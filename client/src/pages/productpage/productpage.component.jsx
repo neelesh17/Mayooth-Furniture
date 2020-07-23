@@ -12,7 +12,6 @@ import SlideProducts from '../../components/slide-products/slide-product.compone
 
 const ProductPage = ({addItem}) => {
     const {name, image, description, price, company} = ProductItem[0];
-    ProductItem[0].quantity =0;
 
     let [User, setQuantity] = useState({
         quan: 1,
@@ -22,9 +21,9 @@ const ProductPage = ({addItem}) => {
     const {quan, clicked} = User;
 
     const handleClick = () => {
-        setQuantity({...User, clicked: 'yes'})
-        ProductItem[0].quantity = quan;
-        addItem(ProductItem[0])
+        
+        addItem(ProductItem[0], quan);
+        setQuantity({quan: 1, clicked: 'yes'});
     }
     return(
     <ProductPageContainer>
@@ -42,9 +41,9 @@ const ProductPage = ({addItem}) => {
                         <Text font="16px/24px Open Sans">{description}</Text>
                     </DesciptionContainer>
                 </div>
-                <Text font="24px/29px Raleway">{price}</Text>
+                <Text font="24px/29px Raleway">${price}/per piece</Text>
                 <QuantityContainer>
-                    <i className="ri-subtract-line" onClick={() => {if(quan>1) setQuantity({...User, quan: quan-1})}}/>
+                    <i className="ri-subtract-line" onClick={() => {if(quan>1) setQuantity({ quan: quan-1})}}/>
                     <span>{quan}</span>
                     <i className="ri-add-line" onClick={() => setQuantity({quan: quan +1 })}/>
                 </QuantityContainer>
@@ -63,7 +62,7 @@ const ProductPage = ({addItem}) => {
 )};
 
 const mapDispatchToProps = dispatch => ({
-    addItem: item => dispatch(addItem(item))
+    addItem: (item,quan) => dispatch(addItem(item, quan))
 });
 
 export default connect(null, mapDispatchToProps)(ProductPage);

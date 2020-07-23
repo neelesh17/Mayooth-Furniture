@@ -18,9 +18,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} /> 
-        <Route exact path="/shop/livingroom" component={CollectionPage} /> 
-        <Route exact path="/shop/kitchendinner" component={CollectionPage} /> 
-        <Route exact path="/shop/bedroom" component={CollectionPage} /> 
+        <Route exact path="/shop/:collectionId" component={CollectionPage} /> 
         <Route exact path="/contactus" component={ContactUs} />
         <Route exact path="/checkout" component={CheckoutPage} />
         <Route exact path="/login" component={Signin} />

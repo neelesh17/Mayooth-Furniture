@@ -18,7 +18,7 @@ export const CartDropdownHeaderContainer = styled.div`
 
 export const EmptyMessageContainer = styled.span`
     font-size: 18px;
-    margin: auto 0;
+    margin: auto;
 `;
 
 export const CartItemsContainer = styled.div`

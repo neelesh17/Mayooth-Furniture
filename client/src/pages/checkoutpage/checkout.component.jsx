@@ -1,13 +1,15 @@
 import React from "react";
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
 import { CheckoutPageContainer, CheckoutHeaderContainer, HeaderBlock } from './checkout.styles';
 import {Text} from '../../components/style-utils/utils.styles';
 
-import {NewItems} from '../../components/Items';
+import { selectCartItems, selectCartTotal} from '../../redux/cart/cart.selector';
 
 import CheckoutItem from '../../components/checkoutitem/checkoutitem.component';
 
-const CheckoutPage = () => (
+const CheckoutPage = ({cartItems, total}) => (
     <CheckoutPageContainer>
         <Text font="Bold Italic 51px Raleway" id="heading">Checkout</Text>
         <CheckoutHeaderContainer>
@@ -18,11 +20,11 @@ const CheckoutPage = () => (
             <HeaderBlock font="24px Raleway">Remove</HeaderBlock>
         </CheckoutHeaderContainer>
         {
-            NewItems.map(Item => 
-                <CheckoutItem key={Item.id} Item={Item}/>
+            cartItems.map(item => 
+                <CheckoutItem key={item.id} item={item}/>
             )
         }
-        <Text font="36px Raleway" className="total">Total: $</Text>
+        <Text font="36px Raleway" className="total">Total: ${total}</Text>
         <Text font="24px Raleway" color="red">
             *Please use the following test credit card for payment*
             <br/>
@@ -31,4 +33,9 @@ const CheckoutPage = () => (
     </CheckoutPageContainer>
 );
 
-export default CheckoutPage;
+const mapStateToProps = createStructuredSelector({
+    cartItems: selectCartItems,
+    total: selectCartTotal
+});
+
+export default connect(mapStateToProps)(CheckoutPage);

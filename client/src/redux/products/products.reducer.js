@@ -55,7 +55,7 @@ const INITIAL_STATE = {
             image: '/images/product6.jpg',
             name: "Mehroon Comfort Chair",
             price: "190",
-            type: "new",
+            type: "none",
             tag: "bedroom",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
@@ -65,7 +65,7 @@ const INITIAL_STATE = {
             image: '/images/product7.jpg',
             name: "Bule Office Comfort Chair",
             price: "130",
-            type: "new",
+            type: "none",
             tag: "bedroom",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
@@ -75,7 +75,7 @@ const INITIAL_STATE = {
             image: '/images/Image4.png',
             name: "Set of plastic Armchairs",
             price: "150",
-            type: "clearence",
+            type: "none",
             tag: "bedroom",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
@@ -87,7 +87,7 @@ const INITIAL_STATE = {
             name: "White Comfort Chair",
             price: "200",
             type: "clearence",
-            tag: "kitchen&dinner",
+            tag: "kitchendinner",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
 
@@ -98,7 +98,7 @@ const INITIAL_STATE = {
             name: "White and Brown Stool",
             price: "50",
             type: "clearence",
-            tag: "kitchen&dinner",
+            tag: "kitchendinner",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
 
@@ -109,7 +109,7 @@ const INITIAL_STATE = {
             name: "White and Brown Stool",
             price: "50",
             type: "clearence",
-            tag: "kitchen&dinner",
+            tag: "kitchendinner",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
 
@@ -120,7 +120,7 @@ const INITIAL_STATE = {
             name: "White and Brown Stool",
             price: "50",
             type: "clearence",
-            tag: "kitchen&dinner",
+            tag: "kitchendinner",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
 
@@ -131,7 +131,7 @@ const INITIAL_STATE = {
             name: "White and Brown Stool",
             price: "50",
             type: "clearence",
-            tag: "kitchen&dinner",
+            tag: "kitchendinner",
             company: "Scott",
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, eum temporibus reprehenderit quaerat animi numquam quo eaque repudiandae nihil, ullam qui, quas excepturi! Voluptatem praesentium illum tempora molestias ab ipsa."
 

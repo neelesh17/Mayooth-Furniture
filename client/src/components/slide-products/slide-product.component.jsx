@@ -6,14 +6,12 @@ import Product from '../product/product.component';
 import { ProductSlide , ProductContainer, Arrows } from './slide-product.styles';
 import { Text } from '../style-utils/utils.styles';
 
-const SlideProducts = ({ heading, items, type }) => {
-    
-    const filteredItems = items.filter((item, id) => (item.type === type));
+const SlideProducts = ({ heading, items }) => {
     let whirligig;
     const next = () => whirligig.next();
     const prev = () => whirligig.prev();
     let arrowOpacity = 1;
-    if(filteredItems.length === 3){
+    if(items.length === 3){
         arrowOpacity =0;
     }
     return (
@@ -30,7 +28,7 @@ const SlideProducts = ({ heading, items, type }) => {
                     infinite="true"
                 >
                     {
-                        filteredItems.map(item => (
+                        items.map(item => (
                                 <Product key={item.id} item={item} dis="inline-block"/>
                             ))
                     }

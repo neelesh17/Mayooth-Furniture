@@ -6,20 +6,21 @@ import Slideshow from '../../components/slideshow/slideshow.component';
 import SlideProducts from '../../components/slide-products/slide-product.component';
 import InspirationProduct from '../../components/inspiration/inspiration.component';
 
-import { selectProducts } from '../../redux/products/products.selector';
+import { selectProductByType } from '../../redux/products/products.selector';
 import { HomePageContainer } from './homepage.styles'
 
-const HomePage = ({items}) => (
+const HomePage = ({newItems, clearenceItems}) => (
     <HomePageContainer>
         <Slideshow />
-        <SlideProducts items={items} type="new" heading="New In Store"/>
+        <SlideProducts items={newItems} heading="New In Store"/>
         <InspirationProduct />
-        <SlideProducts items={items} type="clearence" heading="Clearence Deals"/>
+        <SlideProducts items={clearenceItems} heading="Clearence Deals"/>
     </HomePageContainer>
 );
 
 const mapStateToProps = createStructuredSelector ({
-    items: selectProducts,
+    newItems: selectProductByType("new"),
+    clearenceItems: selectProductByType("clearence"),
 })
 
 export default connect(mapStateToProps)(HomePage);

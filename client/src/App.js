@@ -23,7 +23,7 @@ const App = () => {
         <Route exact path="/checkout" component={CheckoutPage} />
         <Route exact path="/login" component={Signin} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/product" component={ProductPage} />   
+        <Route exact path="/shop/:collectionId/:productId" component={ProductPage} />   
       </Switch>
       <Footer />
     </div>

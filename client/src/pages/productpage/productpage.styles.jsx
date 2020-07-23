@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Text} from '../../components/style-utils/utils.styles';
+import { Text, fade} from '../../components/style-utils/utils.styles';
 
 
 export const ProductPageContainer = styled.div`
@@ -7,7 +7,7 @@ export const ProductPageContainer = styled.div`
     margin: 0;
     width: 100%;
     padding: 2em 0;
-    
+    animation: ${fade} 1s ease;
 `;
 
 export const ProductContainer = styled.div`

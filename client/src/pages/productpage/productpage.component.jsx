@@ -2,16 +2,16 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 
 import {addItem} from '../../redux/cart/cart.actions';
+import { selectProduct, selectRelatedProducts} from '../../redux/products/products.selector';
 
 import { ProductPageContainer, TextContainer, DesciptionContainer, 
     ProductContainer, RelatedProductContainer, QuantityContainer
  } from './productpage.styles';
 import {ImageContainer, Text, CustomButton} from '../../components/style-utils/utils.styles';
-import {ProductItem, NewItems} from '../../components/Items';
 import SlideProducts from '../../components/slide-products/slide-product.component';
 
-const ProductPage = ({addItem}) => {
-    const {name, image, description, price, company} = ProductItem[0];
+const ProductPage = ({product, addItem, related}) => {
+    const {name, image, description, price, company} = product;
 
     let [User, setQuantity] = useState({
         quan: 1,
@@ -19,22 +19,20 @@ const ProductPage = ({addItem}) => {
     });
     
     const {quan, clicked} = User;
-
+    
     const handleClick = () => {
-        
-        addItem(ProductItem[0], quan);
+        addItem(product, quan);
         setQuantity({quan: 1, clicked: 'yes'});
     }
     return(
     <ProductPageContainer>
         <ProductContainer>
-            <ImageContainer src={image} width="50em" height="40em" />
+            <ImageContainer src={image} width="50em" height="40em"/>
             <TextContainer>
                 <div>
                     <Text font="40px Raleway">{company}</Text>
                     <Text font="16px Open Sans">{name}</Text>
                 </div>
-                
                 <div>
                     <Text font="24px/29px Raleway">Description</Text>
                     <DesciptionContainer>
@@ -45,7 +43,7 @@ const ProductPage = ({addItem}) => {
                 <QuantityContainer>
                     <i className="ri-subtract-line" onClick={() => {if(quan>1) setQuantity({ quan: quan-1})}}/>
                     <span>{quan}</span>
-                    <i className="ri-add-line" onClick={() => setQuantity({quan: quan +1 })}/>
+                    <i className="ri-add-line" onClick={() => setQuantity({quan: quan+1 })}/>
                 </QuantityContainer>
                 <CustomButton onClick={handleClick} backgroundColor="rgba(255, 255, 255, 1)" color="rgba(39, 149, 76, 1)" width="10em" height="2.7em">
                     {clicked==='yes'? <i className="ri-checkbox-circle-line ri-xl"></i> :<i className="ri-add-circle-line ri-xl"></i> }Add To Cart
@@ -55,14 +53,19 @@ const ProductPage = ({addItem}) => {
                 </CustomButton>
             </TextContainer>
         </ProductContainer>
-        <RelatedProductContainer>
-            <SlideProducts heading="Related" items={NewItems}/>
+        <RelatedProductContainer >
+            <SlideProducts heading="Related" items={related} />
         </RelatedProductContainer>
     </ProductPageContainer>
 )};
+
+const mapStateToProps = (state, ownProps) => ({
+    product: selectProduct(ownProps.match.params.productId)(state)[0],
+    related: selectRelatedProducts(ownProps.match.params.collectionId, ownProps.match.params.productId)(state)
+});
 
 const mapDispatchToProps = dispatch => ({
     addItem: (item,quan) => dispatch(addItem(item, quan))
 });
 
-export default connect(null, mapDispatchToProps)(ProductPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

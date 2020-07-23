@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const ProductSchema = new mongoose.Schema({
     name: String,
     image: String,
-    imageId: String,
-    price: String,
+    company: String,
+    price: number,
     discription: String,
-    colors: [{type :String}],
+    quantity: number,
 });
 
 module.exports = mongoose.model("Product", ProductSchema);

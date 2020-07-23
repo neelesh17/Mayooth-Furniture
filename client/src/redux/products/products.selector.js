@@ -2,12 +2,27 @@ import  { createSelector } from 'reselect';
 
 const selectproducts = (state) => state.products;
 
-export const selectLivingRoomProducts = createSelector(
+export const selectRelatedProducts = (category, cureentlyDisplayedId) => createSelector(
     [selectproducts],
-    products => products.items.filter(item => item.tag === 'livingroom')
-)
+    products => products.items.filter(item => item.tag === category && String(item.id) !== cureentlyDisplayedId)
+);
 
-export const selectProducts = createSelector (
+export const selectProductByType = (type) => createSelector(
+    [selectproducts],
+    products => products.items.filter(item => item.type === type)
+);
+
+export const selectCategoryProducts = collectionUrlParam => createSelector(
+    [selectproducts],
+    products => products.items.filter(item => item.tag === collectionUrlParam)
+);
+
+export const selectProduct = ProductUrlParam => createSelector(
+    [selectproducts],
+    products => products.items.filter(item => String(item.id) === ProductUrlParam )
+);
+
+export const selectAllProducts = createSelector (
     [selectproducts],
     products => products.items
 );

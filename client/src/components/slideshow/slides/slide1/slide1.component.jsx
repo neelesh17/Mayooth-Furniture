@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import { SlideContainer, TextConatiner} from './slide1.styles';
 
@@ -11,7 +12,9 @@ const Slide1 = ({dis}) => (
             <Text font="32px Raleway">Deal of the week!</Text>
             <Text font="Bold Italic 115px Raleway">upto 30% off</Text>
             <Text font="24px Raleway">These are a steal!</Text>
-            <CustomButton color="rgba(255, 255, 255, 1)" backgroundColor="rgba(204, 76, 110, 1)">Explore</CustomButton>
+            <Link to="/shop/livingroom">
+                <CustomButton color="rgba(255, 255, 255, 1)" backgroundColor="rgba(204, 76, 110, 1)">Explore</CustomButton>
+            </Link>
         </TextConatiner>
     </SlideContainer>
 );

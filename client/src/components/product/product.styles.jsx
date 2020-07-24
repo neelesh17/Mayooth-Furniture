@@ -14,6 +14,7 @@ export const ProductContainer = styled.div`
             opacity: 0.85;
         }
     }
+  
     animation: 1s ${fade} ease-out;
 `;
 

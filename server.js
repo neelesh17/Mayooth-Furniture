@@ -9,17 +9,19 @@ const   express = require("express"),
         passport  = require("passport-local"),
         localStrategy = require("passport-local"),
         User    = require("./models/user");
+        Product = require("./models/product");
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-mongoose.set('useUnifiesTopology', true);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.connect();
+mongoose.connect("mongodb://localhost/maynooth");
+
+// mongoose.set('useUnifiesTopology', true);
+// mongoose.set('useCreateIndex', true);
+// mongoose.set('useNewUrlParser', true);
+// mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
@@ -53,3 +55,4 @@ app.listen(port, process.env.IP ,error => {
   if (error) throw error;
   console.log('Server running on port ' + port);
 });
+

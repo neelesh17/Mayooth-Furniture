@@ -15,14 +15,13 @@ const ProductPage = ({product, addItem, related}) => {
 
     let [User, setQuantity] = useState({
         quan: 1,
-        clicked: 'no',
     });
     
-    const {quan, clicked} = User;
+    const {quan} = User;
     
     const handleClick = () => {
         addItem(product, quan);
-        setQuantity({quan: 1, clicked: 'yes'});
+        setQuantity({quan: 1});
     }
     return(
     <ProductPageContainer>
@@ -46,7 +45,7 @@ const ProductPage = ({product, addItem, related}) => {
                     <i className="ri-add-line" onClick={() => setQuantity({quan: quan+1 })}/>
                 </QuantityContainer>
                 <CustomButton onClick={handleClick} backgroundColor="rgba(255, 255, 255, 1)" color="rgba(39, 149, 76, 1)" width="10em" height="2.7em">
-                    {clicked==='yes'? <i className="ri-checkbox-circle-line ri-xl"></i> :<i className="ri-add-circle-line ri-xl"></i> }Add To Cart
+                    Add To Cart
                 </CustomButton>
                 <CustomButton backgroundColor="rgba(255, 255, 255, 1)" color="rgba(6, 6, 6, 1)" width="10em" height="2.7em">
                     <i className="ri-heart-line ri-xl"></i>Wishlist

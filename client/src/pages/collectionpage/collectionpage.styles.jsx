@@ -9,7 +9,7 @@ export const CollectionPageContainer = styled.div `
 `;
 
 export const ProductContainer = styled.div`
-    margin: 2% 5%;
-    display: inline-block;
+    padding: 2% 5%;
+    display: block;
 `;
 

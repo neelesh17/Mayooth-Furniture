@@ -3,11 +3,10 @@ const   express = require("express"),
         bodyParser = require("body-parser"),
         path    = require("path"),
         compressor = require("compression"),
-        enforce = require('express-sslify'),
         methodOverride = require("method-override"),
         mongoose  = require("mongoose"),
         passport  = require("passport"),
-        localStrategy = require("passport-local"),
+        LocalStrategy = require("passport-local").Strategy,
         User    = require("./models/user");
         Product = require("./models/product");
 
@@ -26,7 +25,6 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
-
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
@@ -47,9 +45,10 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// passport.use(new localStrategy(User.autheticate()));
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 app.use(methodOverride("_method"));
 
@@ -62,6 +61,35 @@ app.get('/', function(req, res) {
     }
   });
 });
+
+app.post('/api/register', function(req, res) {
+  let newUser = new User({
+      username: req.body.username,
+      name: req.body.name,
+      email: req.body.email,
+      phoneNo: req.body.phoneNo
+    });
+    User.register(newUser, req.body.password, function(err,user){
+      if(err){
+        console.log(err);
+        return res.status(500).send({error: err});
+      }else{
+        passport.authenticate('local')(req, res, function () {
+          return res.status(200).send({username: req.body.username,name: req.body.name, email: req.body.email, phoneNo: req.body.phoneNo});
+        });
+      }
+    });
+});
+
+app.post('/api/login', passport.authenticate("local"),function(req,res){
+  res.status(200).send(req.user);
+});
+
+app.get("/api/logout",function(req,res){
+  req.logout();
+  res.sendStatus(200);
+});
+
 
 app.listen(port, error => {
   if (error) throw error;

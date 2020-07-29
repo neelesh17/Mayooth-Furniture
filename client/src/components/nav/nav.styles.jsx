@@ -50,6 +50,7 @@ export const IconContainer = styled.div`
 export const Icons = styled(Link)`
     color: white;
     text-decoration: none;
+    cursor: pointer;
 `;
 
  export const ButtonContainer = styled.div`

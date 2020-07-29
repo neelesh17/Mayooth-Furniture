@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
 import {Link, withRouter}from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option2.svg';
@@ -7,19 +8,29 @@ import FormInput from '../form-input/form-input.component';
 
 import { SignUpContainer, FormContainer, LogoContainer, TextContainer } from './sign-up.styles';
 import { Text, CustomButton } from '../style-utils/utils.styles';
+import { signUpStart } from '../../redux/user/user.actions'
 
-
-const SignUp = ({history}) => {
+const SignUp = ({history, signUpStart}) => {
     const [ userCredentials, setCredentials ] = useState({
-        name: '',
+        username: '',
+        name:'',
         email: '',
-        number: '',
+        phoneNo: '',
         password: '',
         confirmPassword: ''
     });
 
-    const {name, email, number, password, confirmPassword } = userCredentials;
-
+    const {name, email, phoneNo, password, confirmPassword, username } = userCredentials;
+    
+    const handleSubmit = async (event ) => {
+        await event.preventDefault();
+        if(password !== confirmPassword){
+            alert("Password Dont Match");
+            return;
+        }
+        signUpStart({name, email, phoneNo, password, username});
+    };
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
         setCredentials({...userCredentials, [name] : value});
@@ -27,7 +38,7 @@ const SignUp = ({history}) => {
 
     return(
         <SignUpContainer>
-            <FormContainer>
+            <FormContainer onSubmit={handleSubmit}>
                 <TextContainer>
                     <Text font="Bold 24px Open Sans" className="active">SIGN UP</Text>
                     <Text font="Bold 24px Open Sans" onClick={() => history.push('/login')}>LOGIN</Text>  
@@ -41,9 +52,17 @@ const SignUp = ({history}) => {
                     required
                 />
                 <FormInput 
+                    type="text"
+                    name="username"
+                    value={username}
+                    handleChange={handleChange}
+                    label="Userame"
+                    required
+                />
+                <FormInput 
                     type="number"
-                    name="number"
-                    value={number}
+                    name="phoneNo"
+                    value={phoneNo}
                     handleChange={handleChange}
                     label="Phone Number"
                     required
@@ -74,13 +93,13 @@ const SignUp = ({history}) => {
                 />
                 <div style={{padding: "10px 0"}}>
                     <input type="radio" name="terms" className="input" required/>
-                    <label for="terms" className="input">
-                        I Agree with the <Link>Terms & Conditions</Link> of Maynooth Furniture
+                    <label className="input">
+                        I Agree with the <Link to="/">Terms & Conditions</Link> of Maynooth Furniture
                     </label>
                 </div>
                 <div  style={{padding: "10px 0"}}>
                     <input className="input" type="checkbox" name="remember" />
-                    <label className="input" for="remember">Remember me</label>
+                    <label className="input">Remember me</label>
                 </div>
                 <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  type="submit" width="20em" height="4em">
                     <Text color="rgba(255, 255, 255, 1)" font="30px Raleway">Sign Up</Text>
@@ -95,4 +114,8 @@ const SignUp = ({history}) => {
         </SignUpContainer>
 )};
 
-export default withRouter(SignUp);
+const mapDispatchToProps = dispatch => ({
+    signUpStart: (userDetails) => dispatch(signUpStart(userDetails)),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(SignUp));

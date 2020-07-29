@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
 import {withRouter}from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option2.svg';
@@ -8,14 +9,20 @@ import FormInput from '../form-input/form-input.component';
 import { SignUpContainer, FormContainer, LogoContainer, TextContainer } from './sign-in.styles';
 import { Text, CustomButton } from '../style-utils/utils.styles';
 
+import {emailSignInStart} from '../../redux/user/user.actions';
 
-const SignIn = ({history}) => {
+const SignIn = ({history, emailSignInStart}) => {
     const [ userCredentials, setCredentials ] = useState({
-        email: '',
+        username: '',
         password: '',
     })
 
-    const {email,password } = userCredentials;
+    const {username,password } = userCredentials;
+
+    const handleSubmit = async (event ) => {
+        await event.preventDefault();
+        emailSignInStart({username,password});
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -23,17 +30,17 @@ const SignIn = ({history}) => {
     }
     return(
         <SignUpContainer>
-            <FormContainer>
+            <FormContainer onSubmit={handleSubmit}>
                 <TextContainer>
                     <Text font="Bold 24px Open Sans" onClick={() => history.push('/signup')}>SIGN UP</Text>
                     <Text font="Bold 24px Open Sans" className="active">LOGIN</Text>  
                 </TextContainer>
                 <FormInput 
-                    type="email"
-                    name="email"
-                    value={email}
+                    type="username"
+                    name="username"
+                    value={username}
                     handleChange={handleChange}
-                    label="Email"
+                    label="Username"
                     required
                 />
                 <FormInput 
@@ -61,4 +68,8 @@ const SignIn = ({history}) => {
         </SignUpContainer>
 )};
 
-export default withRouter(SignIn);
+const mapDispatchToProps = dispatch => ({
+    emailSignInStart: (emailAndPassword) => dispatch(emailSignInStart(emailAndPassword)),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(SignIn));

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import {selectCartHidden} from '../../redux/cart/cart.selector';
+import {selectCurrentUser} from '../../redux/user/user.selectors';
+import { signOutStart } from '../../redux/user/user.actions';
+
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option3.svg';
 
 import {  
@@ -16,7 +19,7 @@ import { CustomButton } from '../style-utils/utils.styles'
 import Cart from '../cart/cart.component';
 import CartDropdown from '../cart-dropdown/cart.dropdown.component';
 
-const Navbar = ({hidden}) => (
+const Navbar = ({hidden, currentUser, signOutStart}) => (
     <NavContainer>
         <LogoContainer to="/">
             <Logo className="logo" />
@@ -37,7 +40,13 @@ const Navbar = ({hidden}) => (
         </ButtonContainer>
         <IconContainer>
             <span className="search"><i className="ri-search-2-line"></i></span>
-            <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
+            {
+                currentUser ?
+                <Icons onClick={signOutStart}><i class="ri-logout-circle-r-line icon"></i></Icons>
+                :
+                <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
+            }
+            
             <Cart />
         </IconContainer>
         {hidden ? null : <CartDropdown />}
@@ -46,6 +55,11 @@ const Navbar = ({hidden}) => (
 
 const mapStateToProps = createStructuredSelector({
     hidden: selectCartHidden,
+    currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = dispatch => ({
+    signOutStart: () => dispatch(signOutStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

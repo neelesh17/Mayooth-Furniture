@@ -22,3 +22,12 @@ export const clearItemFromCart = item => ({
 export const clearCart = () =>({
     type: CartActionTypes.CLEAR_CART,
 });
+
+export const updateCartItemsInDatabase = () => ({
+    type: CartActionTypes.UPDATE_CART_IN_DATABASE,
+});
+
+export const setCartItemsFromDatabase = (cartItems) => ({
+    type: CartActionTypes.SET_CART_ITEMS_FROM_DATABASE,
+    payload: cartItems
+});

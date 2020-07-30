@@ -42,7 +42,7 @@ const Navbar = ({hidden, currentUser, signOutStart}) => (
             <span className="search"><i className="ri-search-2-line"></i></span>
             {
                 currentUser ?
-                <Icons onClick={signOutStart}><i class="ri-logout-circle-r-line icon"></i></Icons>
+                <Icons as="div" onClick={signOutStart}><i className="ri-logout-circle-r-line icon"></i></Icons>
                 :
                 <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
             }

@@ -7,8 +7,9 @@ const   express = require("express"),
         mongoose  = require("mongoose"),
         passport  = require("passport"),
         LocalStrategy = require("passport-local").Strategy,
-        User    = require("./models/user");
-        Product = require("./models/product");
+        User    = require("./models/user"),
+        Product = require("./models/product"),
+        Cart    = require("./models/cart");
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -90,6 +91,23 @@ app.get("/api/logout",function(req,res){
   res.sendStatus(200);
 });
 
+app.get("/api/session", function(req,res){
+  if(req.isAuthenticated()){
+    return res.status(200).send(req.user);
+  }else {
+    return res.status(200).send();
+  }
+});
+
+app.get("/api/getcartiems", function(req, res){
+  Cart.find({userId: req.body.user.id}, function(err, cartItems){
+    if(err){
+      return res.status(200).send();
+    } else {
+      return res.status(200).send(cartItems);
+    }
+  })
+});
 
 app.listen(port, error => {
   if (error) throw error;

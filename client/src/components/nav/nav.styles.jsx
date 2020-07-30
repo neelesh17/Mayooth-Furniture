@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { fade } from '../style-utils/utils.styles';
 
 export const NavContainer = styled.div`
     height: 77px;
@@ -51,6 +52,8 @@ export const Icons = styled(Link)`
     color: white;
     text-decoration: none;
     cursor: pointer;
+    transition: width 2s linear;
+    animation: ${fade} 1s ease-out;
 `;
 
  export const ButtonContainer = styled.div`

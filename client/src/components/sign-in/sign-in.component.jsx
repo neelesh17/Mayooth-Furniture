@@ -53,7 +53,7 @@ const SignIn = ({history, emailSignInStart}) => {
                 />
                 <div >
                     <input className="input" type="checkbox" name="remember" />
-                    <label className="input" for="remember">Remember me</label>
+                    <label className="input" htmlFor="remember">Remember me</label>
                 </div>
                 <CustomButton backgroundColor="rgba(39, 149, 76, 1)"  type="submit" width="20em" height="4em">
                     <Text color="rgba(255, 255, 255, 1)" font="30px Raleway">Sign In</Text>

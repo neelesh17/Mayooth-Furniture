@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Switch, Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import Navbar from './components/nav/nav.component';
 import Footer from './components/footer/footer.component';
 
+import { checkUserSession } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 import HomePage from './pages/homepage/homepage.component';
@@ -16,7 +17,10 @@ import Signup from './components/sign-up/sign-up.component';
 import CheckoutPage from './pages/checkoutpage/checkout.component';
 import ProductPage from './pages/productpage/productpage.component';
 
-const App = ({currentUser}) => {
+const App = ({currentUser,  checkUserSession}) => {
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
   return (
     <div >
       <Navbar />
@@ -54,4 +58,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps)(App);
+const  mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

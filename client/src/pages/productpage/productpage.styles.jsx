@@ -37,7 +37,7 @@ export const TextContainer = styled.div`
     }
 `;
 export const DesciptionContainer = styled.div`
-    width: 25em;
+    width: 45em;
 `;
 
 export const QuantityContainer = styled.div`

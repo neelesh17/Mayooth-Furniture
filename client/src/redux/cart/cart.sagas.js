@@ -4,7 +4,7 @@ import axios from 'axios';
 import UserActionTypes from '../user/user.action-types';
 import { selectCurrentUser } from '../user/user.selectors';
 import { selectCartItems } from './cart.selector';
-import CartActionTypes from './cart.actions-types'
+import CartActionTypes from './cart.actions-types';
 import { clearCart, setCartItemsFromDatabase } from './cart.actions';
 
 export function* clearCartOnSignOut() {
@@ -17,15 +17,15 @@ export function* updateCartInDatabase() {
         try {
           const cartItems = yield select(selectCartItems);
           yield axios({
-            url: 'api/setcartitems',
-            method: 'post', 
+            url: "/api/cartitems",
+            method: "post", 
             data: {
-              cartItems,
+              cartItems: cartItems,
               user: currentUser,
             }
-          }).then(response => (
-            response
-          )).catch(error => {
+          }).then(response => {
+            console.log(response)
+          }).catch(error => {
             throw error;
           });
         } catch (error) {
@@ -36,19 +36,16 @@ export function* updateCartInDatabase() {
 
 export function* checkCartFromDatabase({ payload: user }) {
     const cartItems = yield axios({
-                          url:"api/cartiems",
-                          method: "get",
-                          params: {
-                            user: user
-                          }
-                        }).then(response => (
-                          response.data
-                        )).catch(error => {throw error});
-    if(cartItems.length === 0){
-      return;
-    }else{
-      yield put(setCartItemsFromDatabase(cartItems));
-    }
+                      url:"api/cartiems",
+                      method: "get",
+                      params: {
+                        user: user
+                      }
+                    }).then(response => (
+                      response.data
+                    )).catch(error => {throw error});
+    yield put(setCartItemsFromDatabase(cartItems));
+  
     
 };
 

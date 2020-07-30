@@ -19,7 +19,7 @@ export const selectCategoryProducts = collectionUrlParam => createSelector(
 
 export const selectProduct = ProductUrlParam => createSelector(
     [selectproducts],
-    products => products.items.filter(item => String(item.id) === ProductUrlParam )
+    products => products.items.filter(item => String(item.id) === String(ProductUrlParam) )
 );
 
 export const selectAllProducts = createSelector (

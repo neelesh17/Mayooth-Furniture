@@ -54,7 +54,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(methodOverride("_method"));
 
-app.get('/', function(req, res) {
+app.get('/api/getproducts', function(req, res) {
   Product.find({},function(err,products){
     if(err){
         res.status(500).send({error: err});
@@ -110,16 +110,17 @@ app.get("/api/cartiems", function(req, res){
   })
 });
 
-app.post("/api/setcartitems", function(req, res){
-  Cart.findOneAndUpdate({userId: req.body.user.id},{items: req.body.cartItems} ,function(err, cartItems){
+app.post("/api/cartitems", async function(req, res){
+  await Cart.findOneAndUpdate({userId: req.body.user.id},{items: req.body.cartItems},async function(err, cartItems){
     if(err){
-      Cart.create({
+      await Cart.create({
         items: req.body.cartItems,
         userId: req.body.user.id,
       }, function(err, cart){
-        if(err)
+        if(err){
+          console.log(err);
           return res.status(500).send({error: err});
-        else
+        }else
           return res.status(500).send(cart);
       });
     }

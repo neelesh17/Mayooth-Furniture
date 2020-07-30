@@ -7,6 +7,7 @@ import Navbar from './components/nav/nav.component';
 import Footer from './components/footer/footer.component';
 
 import { checkUserSession } from './redux/user/user.actions';
+import { fetchingItemsStart } from './redux/products/product.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 import HomePage from './pages/homepage/homepage.component';
@@ -17,10 +18,13 @@ import Signup from './components/sign-up/sign-up.component';
 import CheckoutPage from './pages/checkoutpage/checkout.component';
 import ProductPage from './pages/productpage/productpage.component';
 
-const App = ({currentUser,  checkUserSession}) => {
+const App = ({currentUser,  checkUserSession, fetchingItemsStart}) => {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
+  useEffect(() => {
+    fetchingItemsStart();
+  }, [fetchingItemsStart]);
   return (
     <div >
       <Navbar />
@@ -60,6 +64,7 @@ const mapStateToProps = createStructuredSelector({
 
 const  mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession()),
+  fetchingItemsStart: () => dispatch(fetchingItemsStart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

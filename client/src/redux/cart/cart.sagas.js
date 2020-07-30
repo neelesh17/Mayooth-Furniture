@@ -1,12 +1,11 @@
 import { takeLatest, all, call, put, select} from 'redux-saga/effects';
+import axios from 'axios';
 
-import { getUserCartRef } from '../../firebase/firebase.utils';
-import UserActionTypes from '../user/user.action.types';
+import UserActionTypes from '../user/user.action-types';
 import { selectCurrentUser } from '../user/user.selectors';
 import { selectCartItems } from './cart.selector';
-import CartActionTypes from './cart.action.types'
-import { clearCart, setCartItemsFromDatabase } from './carts.actions';
-import { response } from 'express';
+import CartActionTypes from './cart.actions-types'
+import { clearCart, setCartItemsFromDatabase } from './cart.actions';
 
 export function* clearCartOnSignOut() {
     yield put(clearCart());
@@ -16,9 +15,19 @@ export function* updateCartInDatabase() {
     const currentUser = yield select(selectCurrentUser);
     if (currentUser) {
         try {
-          const cartRef = yield getUserCartRef(currentUser.id);
           const cartItems = yield select(selectCartItems);
-          yield cartRef.update({ cartItems });
+          yield axios({
+            url: 'api/setcartitems',
+            method: 'post', 
+            data: {
+              cartItems,
+              user: currentUser,
+            }
+          }).then(response => (
+            response
+          )).catch(error => {
+            throw error;
+          });
         } catch (error) {
           console.log(error);
         }
@@ -27,17 +36,21 @@ export function* updateCartInDatabase() {
 
 export function* checkCartFromDatabase({ payload: user }) {
     const cartItems = yield axios({
-                          url:"api/getcartiems",
+                          url:"api/cartiems",
                           method: "get",
-                          data: {
+                          params: {
                             user: user
                           }
                         }).then(response => (
-                          response
+                          response.data
                         )).catch(error => {throw error});
-    console.log(cartItems);
-    yield put(setCartItemsFromDatabase(cartItems));
-}
+    if(cartItems.length === 0){
+      return;
+    }else{
+      yield put(setCartItemsFromDatabase(cartItems));
+    }
+    
+};
 
 export function* onSignOutSuccess() {
     yield takeLatest(UserActionTypes.SIGN_OUT_SUCCESS, clearCartOnSignOut)

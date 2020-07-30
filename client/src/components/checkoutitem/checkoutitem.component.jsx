@@ -18,7 +18,7 @@ const CheckoutItem = ({item, clearItem, addItem, removeItem}) => {
             <i className="ri-arrow-right-s-line ri-2x" onClick={() => addItem(item)}/>
         </DetailContainer>
         <DetailContainer font="24px Raleway">${price}</DetailContainer>
-        <DetailContainer ><i class="ri-close-circle-line ri-xl" onClick={() => clearItem(item)}></i></DetailContainer>
+        <DetailContainer ><i className="ri-close-circle-line ri-xl" onClick={() => clearItem(item)}></i></DetailContainer>
     </CheckoutItemContainer>
 )};
 

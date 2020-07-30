@@ -8,8 +8,9 @@ const   express = require("express"),
         passport  = require("passport"),
         LocalStrategy = require("passport-local").Strategy,
         User    = require("./models/user"),
-        Product = require("./models/product"),
-        Cart    = require("./models/cart");
+        Cart    = require("./models/cart"),
+        Product = require("./models/product");
+        
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -99,14 +100,31 @@ app.get("/api/session", function(req,res){
   }
 });
 
-app.get("/api/getcartiems", function(req, res){
-  Cart.find({userId: req.body.user.id}, function(err, cartItems){
+app.get("/api/cartiems", function(req, res){
+  Cart.find({userId: req.user.id}, function(err, cartItems){
     if(err){
       return res.status(200).send();
     } else {
       return res.status(200).send(cartItems);
     }
   })
+});
+
+app.post("/api/setcartitems", function(req, res){
+  Cart.findOneAndUpdate({userId: req.body.user.id},{items: req.body.cartItems} ,function(err, cartItems){
+    if(err){
+      Cart.create({
+        items: req.body.cartItems,
+        userId: req.body.user.id,
+      }, function(err, cart){
+        if(err)
+          return res.status(500).send({error: err});
+        else
+          return res.status(500).send(cart);
+      });
+    }
+    return res.status(200).send(cartItems);
+  });
 });
 
 app.listen(port, error => {

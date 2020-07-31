@@ -14,14 +14,14 @@ const CheckoutPage = ({cartItems, total}) => (
         <Text font="Bold Italic 51px Raleway" id="heading">Checkout</Text>
         <CheckoutHeaderContainer>
             <HeaderBlock font="24px Raleway">Product</HeaderBlock>
-            <HeaderBlock font="24px Raleway">Description</HeaderBlock>
+            <HeaderBlock font="24px Raleway">Name</HeaderBlock>
             <HeaderBlock font="24px Raleway">Quantity</HeaderBlock>
             <HeaderBlock font="24px Raleway">Price</HeaderBlock>
             <HeaderBlock font="24px Raleway">Remove</HeaderBlock>
         </CheckoutHeaderContainer>
         {
             cartItems.map(item => 
-                <CheckoutItem key={item.id} item={item}/>
+                <CheckoutItem key={item._id} item={item}/>
             )
         }
         <Text font="36px Raleway" className="total">Total: ${total}</Text>

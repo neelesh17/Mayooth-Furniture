@@ -23,8 +23,6 @@ export function* updateCartInDatabase() {
               cartItems: cartItems,
               user: currentUser,
             }
-          }).then(response => {
-            console.log(response)
           }).catch(error => {
             throw error;
           });
@@ -36,7 +34,7 @@ export function* updateCartInDatabase() {
 
 export function* checkCartFromDatabase({ payload: user }) {
     const cartItems = yield axios({
-                      url:"api/cartiems",
+                      url:"/api/cartiems",
                       method: "get",
                       params: {
                         user: user
@@ -44,9 +42,7 @@ export function* checkCartFromDatabase({ payload: user }) {
                     }).then(response => (
                       response.data
                     )).catch(error => {throw error});
-    yield put(setCartItemsFromDatabase(cartItems));
-  
-    
+    yield put(setCartItemsFromDatabase(cartItems[0].items));
 };
 
 export function* onSignOutSuccess() {

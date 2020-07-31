@@ -12,7 +12,7 @@ import {
 export function* signInWithEmail({ payload: { username, password } }) {
     try{
         const user  = yield axios({
-            url: 'api/login',
+            url: '/api/login',
             method: 'post',
             data: {
                 username: username,
@@ -32,7 +32,7 @@ export function* signInWithEmail({ payload: { username, password } }) {
 export function* isUserAuthenticated() {
     try{
         const user = yield axios({
-            url:'api/session',
+            url:'/api/session',
             method: 'get',
             withCredentials: true
         }).then(response => (
@@ -50,7 +50,7 @@ export function* isUserAuthenticated() {
 export function* signOut() {
     try {
         yield axios({
-            url: 'api/logout',
+            url: '/api/logout',
             method: 'get',
         }).catch(error => {
             throw error
@@ -64,7 +64,7 @@ export function* signOut() {
 export function* signUp({ payload: { email, password, name, phoneNo, username }}) {
     try {
         const user = yield axios({
-            url: 'api/register',
+            url: '/api/register',
             method: 'post',
             data: {
                 email: email,

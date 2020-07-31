@@ -7,7 +7,7 @@ import {fetchingItemsSuccess, fetchingItemsFailure} from './product.actions';
 export function* getItemsFrromDatabase(){
     try{
         const productItems = yield axios({
-            url: "api/getproducts",
+            url: "/api/getproducts",
             method:"get",
         }).then(response => {
             return response.data;

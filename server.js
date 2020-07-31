@@ -9,8 +9,11 @@ const   express = require("express"),
         LocalStrategy = require("passport-local").Strategy,
         User    = require("./models/user"),
         Cart    = require("./models/cart"),
-        Product = require("./models/product");
+        Product = require("./models/product").model;
         
+const loginRegisterRoutes = require('./routes/login-register'),
+      cartitemRoutes      = require('./routes/cartitems'),
+      productRoutes       = require('./routes/product');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -54,79 +57,10 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(methodOverride("_method"));
 
-app.get('/api/getproducts', function(req, res) {
-  Product.find({},function(err,products){
-    if(err){
-        res.status(500).send({error: err});
-    } else {
-        res.status(200).send(products);
-    }
-  });
-});
-
-app.post('/api/register', function(req, res) {
-  let newUser = new User({
-      username: req.body.username,
-      name: req.body.name,
-      email: req.body.email,
-      phoneNo: req.body.phoneNo
-    });
-    User.register(newUser, req.body.password, function(err,user){
-      if(err){
-        console.log(err);
-        return res.status(500).send({error: err});
-      }else{
-        passport.authenticate('local')(req, res, function () {
-          return res.status(200).send({username: req.body.username,name: req.body.name, email: req.body.email, phoneNo: req.body.phoneNo});
-        });
-      }
-    });
-});
-
-app.post('/api/login', passport.authenticate("local"),function(req,res){
-  res.status(200).send(req.user);
-});
-
-app.get("/api/logout",function(req,res){
-  req.logout();
-  res.sendStatus(200);
-});
-
-app.get("/api/session", function(req,res){
-  if(req.isAuthenticated()){
-    return res.status(200).send(req.user);
-  }else {
-    return res.status(200).send();
-  }
-});
-
-app.get("/api/cartiems", function(req, res){
-  Cart.find({userId: req.user.id}, function(err, cartItems){
-    if(err){
-      return res.status(200).send();
-    } else {
-      return res.status(200).send(cartItems);
-    }
-  })
-});
-
-app.post("/api/cartitems", async function(req, res){
-  await Cart.findOneAndUpdate({userId: req.body.user.id},{items: req.body.cartItems},async function(err, cartItems){
-    if(err){
-      await Cart.create({
-        items: req.body.cartItems,
-        userId: req.body.user.id,
-      }, function(err, cart){
-        if(err){
-          console.log(err);
-          return res.status(500).send({error: err});
-        }else
-          return res.status(500).send(cart);
-      });
-    }
-    return res.status(200).send(cartItems);
-  });
-});
+//Requring routes
+app.use("/",productRoutes);
+app.use("/",loginRegisterRoutes);
+app.use("/",cartitemRoutes);
 
 app.listen(port, error => {
   if (error) throw error;

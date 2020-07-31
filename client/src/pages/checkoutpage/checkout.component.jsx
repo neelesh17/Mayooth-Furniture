@@ -4,6 +4,7 @@ import {createStructuredSelector} from 'reselect';
 
 import { CheckoutPageContainer, CheckoutHeaderContainer, HeaderBlock } from './checkout.styles';
 import {Text} from '../../components/style-utils/utils.styles';
+import StripeCheckoutComponent from '../../components/stripe-button/stripe-button.component'; 
 
 import { selectCartItems, selectCartTotal} from '../../redux/cart/cart.selector';
 
@@ -30,6 +31,7 @@ const CheckoutPage = ({cartItems, total}) => (
             <br/>
             4242 4242 4242 4242 - Exp: 01/25 CVV:123
         </Text>
+        <StripeCheckoutComponent price={total}/>
     </CheckoutPageContainer>
 );
 

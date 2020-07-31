@@ -13,12 +13,14 @@ const   express = require("express"),
         
 const loginRegisterRoutes = require('./routes/login-register'),
       cartitemRoutes      = require('./routes/cartitems'),
-      productRoutes       = require('./routes/product');
+      indexRoutes       = require('./routes/index');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-  
 }
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -58,9 +60,26 @@ passport.deserializeUser(User.deserializeUser());
 app.use(methodOverride("_method"));
 
 //Requring routes
-app.use("/",productRoutes);
+app.use("/",indexRoutes);
 app.use("/",loginRegisterRoutes);
 app.use("/",cartitemRoutes);
+
+app.post('/api/payment', (req, res) => {
+  const body = {
+    source: req.body.token.id,
+    amount: req.body.amount,
+    currency: 'usd'
+  };
+
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
+    if (stripeErr) {
+      console.log(stripeErr)
+      res.status(500).send({ error: stripeErr });
+    } else {
+      res.status(200).send({ success: stripeRes });
+    }
+  });
+});
 
 app.listen(port, error => {
   if (error) throw error;

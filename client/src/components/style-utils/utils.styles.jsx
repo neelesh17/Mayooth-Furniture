@@ -24,6 +24,7 @@ export const Text = styled.p`
     text-shadow: 0px 1px 3px #00000063;
     margin: 0;
     text-align: center;
+    padding: ${props => props.padding ? props.padding : 0 };
 `;
 
 export const ImageContainer = styled.img`

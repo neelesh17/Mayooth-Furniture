@@ -17,6 +17,7 @@ import Signin from './components/sign-in/sign-in.component';
 import Signup from './components/sign-up/sign-up.component';
 import CheckoutPage from './pages/checkoutpage/checkout.component';
 import ProductPage from './pages/productpage/productpage.component';
+import StripeCheckout from './components/stripe-checkout/stripe-checkout.component';
 
 const App = ({currentUser,  checkUserSession, fetchingItemsStart}) => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const App = ({currentUser,  checkUserSession, fetchingItemsStart}) => {
     <div >
       <Navbar />
       <Switch>
+        
         <Route exact path="/" component={HomePage} /> 
         <Route exact path="/shop/:collectionId" component={CollectionPage} /> 
         <Route exact path="/contactus" component={ContactUs} />
@@ -52,6 +54,7 @@ const App = ({currentUser,  checkUserSession, fetchingItemsStart}) => {
                 (<Signin/>)
               } 
             />
+        <Route exact path="/payment" component={StripeCheckout} />
       </Switch>
       <Footer />
     </div>

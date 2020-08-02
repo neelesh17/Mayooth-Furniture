@@ -25,7 +25,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
-mongoose.connect('mongodb+srv://Neelesh:Neelesh1703@cluster0.pbv8w.mongodb.net/maynooth?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_ULR);
 
 mongoose.set('useUnifiedTopology', true );
 mongoose.set('useCreateIndex', true);

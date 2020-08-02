@@ -41,7 +41,7 @@ export function* isUserAuthenticated() {
             throw error;
         });
         if(!user) return;
-        yield put(signInSuccess({id: user._id, ...user}));
+        yield put(signInSuccess({...user}));
     } catch(error) {
         yield put(signInFailure(error));
     }

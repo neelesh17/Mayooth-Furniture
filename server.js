@@ -1,4 +1,5 @@
 const   express = require("express"),
+        Stripe  = require("stripe"),
         cors    = require("cors"),
         bodyParser = require("body-parser"),
         path    = require("path"),
@@ -19,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -64,21 +65,20 @@ app.use("/",indexRoutes);
 app.use("/",loginRegisterRoutes);
 app.use("/",cartitemRoutes);
 
-app.post('/api/payment', (req, res) => {
-  const body = {
-    source: req.body.token.id,
-    amount: req.body.amount,
-    currency: 'usd'
-  };
-
-  stripe.charges.create(body, (stripeErr, stripeRes) => {
-    if (stripeErr) {
-      console.log(stripeErr)
-      res.status(500).send({ error: stripeErr });
-    } else {
-      res.status(200).send({ success: stripeRes });
-    }
-  });
+app.post('/api/payment', async (req, res) => {
+  const { id, amount, userCredentials} = req.body;
+  try{
+    const payment = await stripe.paymentIntents.create({
+      amount,
+      currency: "USD",
+      payment_method: id,
+      confirm: true,
+      receipt_email: userCredentials.email
+    });
+    return res.status(200).send(payment);
+  }catch(error){
+    return res.status(500).send(error.message);
+  }
 });
 
 app.listen(port, error => {

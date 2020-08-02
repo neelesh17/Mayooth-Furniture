@@ -26,7 +26,7 @@ const CheckoutPage = ({cartItems, total, history}) => (
             )
         }
         <Text font="36px Raleway" className="total">Total: ${total}</Text>
-        <CustomButton color="white" backgroundColor="black" width="15em" onClick={() => history.push("/payment")}>Go to Checkout</CustomButton>
+        <CustomButton color="white" backgroundColor="black" width="15em" onClick={() => history.push("/payment")}>Go to Payment</CustomButton>
     </CheckoutPageContainer>
 );
 

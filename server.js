@@ -8,9 +8,7 @@ const   express = require("express"),
         mongoose  = require("mongoose"),
         passport  = require("passport"),
         LocalStrategy = require("passport-local").Strategy,
-        User    = require("./models/user"),
-        Cart    = require("./models/cart"),
-        Product = require("./models/product").model;
+        User    = require("./models/user");
         
 const loginRegisterRoutes = require('./routes/login-register'),
       cartitemRoutes      = require('./routes/cartitems'),

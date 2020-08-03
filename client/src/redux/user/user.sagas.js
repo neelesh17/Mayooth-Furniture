@@ -8,7 +8,6 @@ import {
     signUpFailure, signUpSuccess
 } from './user.actions';
 
-
 export function* signInWithEmail({ payload: { username, password } }) {
     try{
         const user  = yield axios({

@@ -14,6 +14,9 @@ const SlideProducts = ({ heading, items }) => {
     if(items.length === 3){
         arrowOpacity =0;
     }
+    if(!items){
+        throw new Error("not found");
+    }
     return (
         
         <ProductSlide>

@@ -38,7 +38,7 @@ export function* checkCartFromDatabase({ payload: user }) {
                       url:"/api/cartiems",
                       method: "get",
                       params: {
-                        user: user
+                        userId: user.id
                       }
                     }).then(response => (
                       response.data

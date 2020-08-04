@@ -57,8 +57,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 app.use(methodOverride("_method"));
+
+app.listen(port, error => {
+  if (error) throw error;
+  console.log('Server running on port ' + port);
+});
 
 //Requring routes
 app.use("/",indexRoutes);
@@ -81,7 +85,4 @@ app.post('/api/payment', async (req, res) => {
   }
 });
 
-app.listen(port, error => {
-  if (error) throw error;
-  console.log('Server running on port ' + port);
-});
+

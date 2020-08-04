@@ -26,6 +26,8 @@ const port = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGODB_ULR,{
   useUnifiedTopology : true ,
+  useCreateIndex: true,
+  useFindAndModify: false,
   useNewUrlParser: true
 });
 
@@ -48,7 +50,7 @@ app.use(require("express-session")({
   resave: false,
   saveUninitialized: false
 }));
-app.use(passport.initialize()) ;
+app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy(User.authenticate()));

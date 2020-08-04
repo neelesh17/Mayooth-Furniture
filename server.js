@@ -8,7 +8,8 @@ const   express = require("express"),
         mongoose  = require("mongoose"),
         passport  = require("passport"),
         LocalStrategy = require("passport-local").Strategy,
-        User    = require("./models/user");
+        User    = require("./models/user"),
+        enforce = require('express-sslify');
         
 const loginRegisterRoutes = require('./routes/login-register'),
       cartitemRoutes      = require('./routes/cartitems'),
@@ -31,6 +32,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {

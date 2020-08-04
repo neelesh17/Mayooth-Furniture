@@ -24,7 +24,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGODB_ULR,{
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/maynooth",{
   useUnifiedTopology : true ,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -34,16 +34,6 @@ mongoose.connect(process.env.MONGODB_ULR,{
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(compression());
-  
-  app.use(express.static(path.join(__dirname, 'client/build')));
-
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
 
 app.use(require("express-session")({
   secret: "Maynooth Furniture Authentication",
@@ -58,11 +48,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(methodOverride("_method"));
-
-app.listen(port, error => {
-  if (error) throw error;
-  console.log('Server running on port ' + port);
-});
 
 //Requring routes
 app.use("/",indexRoutes);
@@ -85,4 +70,17 @@ app.post('/api/payment', async (req, res) => {
   }
 });
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(compression());
+  
+  app.use(express.static('client/build'));
 
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
+app.listen(port, error => {
+  if (error) throw error;
+  console.log('Server running on port ' + port);
+});

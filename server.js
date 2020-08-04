@@ -33,11 +33,12 @@ mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(compression());
-  app.use(bodyParser.urlencoded({ extended: true }));
+
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', function(req, res) {

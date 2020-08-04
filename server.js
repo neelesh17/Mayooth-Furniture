@@ -24,25 +24,25 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGODB_ULR);
-
-mongoose.set('useUnifiedTopology', true );
-mongoose.set('useCreateIndex', true);
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
+mongoose.connect(process.env.MONGODB_ULR,{
+  useUnifiedTopology : true ,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useNewUrlParser: true
+});
 
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(compression());
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  
+  app.use(express.static('client/build'));
 
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+  // app.get('*', function(req, res) {
+  //   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  // });
 }
 
 app.use(require("express-session")({

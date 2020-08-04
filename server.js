@@ -9,8 +9,6 @@ const   express = require("express"),
         passport  = require("passport"),
         LocalStrategy = require("passport-local").Strategy,
         User    = require("./models/user"),
-        Product   = require('../models/product').model,
-        Cart      = require('../models/cart'),
         enforce = require('express-sslify');
         
 const loginRegisterRoutes = require('./routes/login-register'),
@@ -35,12 +33,11 @@ mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(compression());
-
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', function(req, res) {
@@ -67,10 +64,10 @@ app.listen(port, error => {
   console.log('Server running on port ' + port);
 });
 
-// //Requring routes
-// app.use("/",indexRoutes);
-// app.use("/",loginRegisterRoutes);
-// app.use("/",cartitemRoutes);
+//Requring routes
+app.use("/",indexRoutes);
+app.use("/",loginRegisterRoutes);
+app.use("/",cartitemRoutes);
 
 app.post('/api/payment', async (req, res) => {
   const { id, amount, userCredentials} = req.body;
@@ -86,82 +83,6 @@ app.post('/api/payment', async (req, res) => {
   }catch(error){
     return res.status(500).send(error.message);
   }
-});
-
-app.post('/api/register', function(req, res) {
-  let newUser = new User({
-      username: req.body.username,
-      name: req.body.name,
-      email: req.body.email,
-      phoneNo: req.body.phoneNo
-    });
-    User.register(newUser, req.body.password, function(err,user){
-      if(err){
-        console.log(err);
-        return res.status(500).send({error: err});
-      }else{
-        passport.authenticate('local')(req, res, function () {
-          return res.status(200).send({id: user._id,username: req.body.username,name: req.body.name, email: req.body.email, phoneNo: req.body.phoneNo});
-        });
-      }
-    });
-});
-
-app.post('/api/login', passport.authenticate("local"),function(req,res){
-  res.status(200).send(req.user);
-});
-
-app.get("/api/logout",function(req,res){
-  req.logout();
-  res.status(200).send({});
-});
-
-app.get("/api/session", function(req,res){
-  if(req.isAuthenticated()){
-    return res.status(200).send(req.user);
-  }else {
-    return res.status(200).send();
-  }
-});
-
-app.get("/api/cartiems", function(req, res){
-  Cart.find({userId: req.userId}, function(err, cartItems){
-    if(err){
-      return res.status(200).send();
-    } else {
-      return res.status(200).send(cartItems);
-    }
-  })
-});
-
-app.post("/api/cartitems", async function(req, res){
-  await Cart.findOneAndUpdate({userId: req.body.user.id},{items: req.body.cartItems}, {upsert: true}, function(err, newCart){
-    if(err){
-      if(!newCart){
-        newCart= new Cart({items: req.body.cartItems,
-          userId: req.body.user.id});
-      }
-      newCart.save(function(err){
-        if(err){
-          console.log(err);
-          return res.status(500).send({error: err});
-        }else{
-          return res.status(200);
-        }
-      });
-    }
-    return res.status(200);
-  });
-});
-
-app.get('/api/getproducts', function(req, res) {
-  Product.find({},function(err,products){
-    if(err){
-        res.status(500).send({error: err});
-    } else {
-        res.status(200).send(products);
-    }
-  });
 });
 
 

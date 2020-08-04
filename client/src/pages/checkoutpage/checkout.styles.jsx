@@ -11,7 +11,7 @@ export const CheckoutPageContainer = styled.div`
     .total{
         margin-left: auto;
     }
-    button{
+    .checkout{
         margin-left: auto;
         margin-top: 50px;
     }

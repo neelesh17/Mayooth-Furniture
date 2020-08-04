@@ -45,7 +45,7 @@ const CheckoutForm = ({price, history, clearCart, currentUser}) => {
         if(!error){
             const { id } = paymentMethod;
             try{
-                const  { data } = await axios.post("/api/payment", {id, amount: price, userCredentials});
+                await axios.post("/api/payment", {id, amount: price, userCredentials});
                 alert("payment successfull");
                 clearCart();
                 history.push("/");

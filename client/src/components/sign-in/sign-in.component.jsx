@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import {withRouter}from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option2.svg';
 
@@ -10,8 +13,10 @@ import { SignUpContainer, FormContainer, LogoContainer, TextContainer } from './
 import { Text, CustomButton } from '../style-utils/utils.styles';
 
 import {emailSignInStart} from '../../redux/user/user.actions';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-const SignIn = ({history, emailSignInStart}) => {
+toast.configure()
+const SignIn = ({history, emailSignInStart,currentUser}) => {
     const [ userCredentials, setCredentials ] = useState({
         username: '',
         password: '',
@@ -21,7 +26,10 @@ const SignIn = ({history, emailSignInStart}) => {
 
     const handleSubmit = async (event ) => {
         await event.preventDefault();
-        emailSignInStart({username,password});
+        await emailSignInStart({username,password});
+        if(!currentUser){
+            toast.error("The username or password you entered is incorrect", {position: toast.POSITION.TOP_CENTER, autoClose: 2000});
+        }
     };
 
     const handleChange = (event) => {
@@ -65,11 +73,16 @@ const SignIn = ({history, emailSignInStart}) => {
                     <Logo />
                 </LogoContainer>
             </div>
+            <ToastContainer></ToastContainer>
         </SignUpContainer>
 )};
+
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+})
 
 const mapDispatchToProps = dispatch => ({
     emailSignInStart: (emailAndPassword) => dispatch(emailSignInStart(emailAndPassword)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(SignIn));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

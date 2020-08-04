@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import {Link, withRouter}from 'react-router-dom';
+import {createStructuredSelector} from 'reselect';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option2.svg';
 
@@ -8,9 +11,12 @@ import FormInput from '../form-input/form-input.component';
 
 import { SignUpContainer, FormContainer, LogoContainer, TextContainer } from './sign-up.styles';
 import { Text, CustomButton } from '../style-utils/utils.styles';
-import { signUpStart } from '../../redux/user/user.actions'
 
-const SignUp = ({history, signUpStart}) => {
+import { signUpStart } from '../../redux/user/user.actions';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+toast.configure()
+const SignUp = ({history, signUpStart , currentUser}) => {
     const [ userCredentials, setCredentials ] = useState({
         username: '',
         name:'',
@@ -25,10 +31,14 @@ const SignUp = ({history, signUpStart}) => {
     const handleSubmit = async (event ) => {
         await event.preventDefault();
         if(password !== confirmPassword){
-            alert("Password Dont Match");
+            toast.error("Password and comfirm password dont match",{position: toast.POSITION.TOP_CENTER, autoClose: 2000});
             return;
         }
-        signUpStart({name, email, phoneNo, password, username});
+        await signUpStart({name, email, phoneNo, password, username});
+        if(!currentUser){
+            toast.error("The username or password you entered is incorrect", {position: toast.POSITION.TOP_CENTER, autoClose: 2000});
+            return;
+        }
     };
     
     const handleChange = (event) => {
@@ -114,8 +124,12 @@ const SignUp = ({history, signUpStart}) => {
         </SignUpContainer>
 )};
 
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+})
+
 const mapDispatchToProps = dispatch => ({
     signUpStart: (userDetails) => dispatch(signUpStart(userDetails)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(SignUp));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));

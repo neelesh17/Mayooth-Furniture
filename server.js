@@ -8,8 +8,7 @@ const   express = require("express"),
         mongoose  = require("mongoose"),
         passport  = require("passport"),
         LocalStrategy = require("passport-local").Strategy,
-        User    = require("./models/user"),
-        enforce = require('express-sslify');
+        User    = require("./models/user");
         
 const loginRegisterRoutes = require('./routes/login-register'),
       cartitemRoutes      = require('./routes/cartitems'),

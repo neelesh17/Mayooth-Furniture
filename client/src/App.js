@@ -32,7 +32,7 @@ const App = ({currentUser,  checkUserSession, fetchingItemsStart}) => {
     <div >
       <Navbar />
       <Switch>
-        <ErrorBoundary>
+ 
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={HomePage} /> 
             <Route exact path="/shop/:collectionId" component={CollectionPage} /> 
@@ -59,7 +59,7 @@ const App = ({currentUser,  checkUserSession, fetchingItemsStart}) => {
                 />
             <Route exact path="/payment" component={StripeCheckout}/>
           </Suspense>
-        </ErrorBoundary>
+     
       </Switch>
       <Footer />
     </div>

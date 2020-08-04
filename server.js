@@ -32,7 +32,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {

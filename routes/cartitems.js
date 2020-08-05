@@ -3,7 +3,7 @@ const express   = require("express"),
       Cart      = require('../models/cart');
 
 router.get("/api/cartiems", function(req, res){
-  Cart.find({userId: req.userId}, function(err, cartItems){
+  Cart.find({userId: req.user}, function(err, cartItems){
     if(err){
       return res.status(200).send();
     } else {

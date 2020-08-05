@@ -13,7 +13,6 @@ export function* clearCartOnSignOut() {
 
 export function* updateCartInDatabase() {
     const currentUser = yield select(selectCurrentUser);
-    console.log("abc",currentUser);
     if (currentUser) {
         try {
           const cartItems = yield select(selectCartItems);

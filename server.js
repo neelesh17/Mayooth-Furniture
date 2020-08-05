@@ -49,9 +49,9 @@ passport.deserializeUser(User.deserializeUser());
 app.use(methodOverride("_method"));
 
 //Requring routes
-app.use("/",indexRoutes);
-app.use("/",loginRegisterRoutes);
-app.use("/",cartitemRoutes);
+app.use('/',indexRoutes);
+app.use('/',loginRegisterRoutes);
+app.use('/',cartitemRoutes);
 
 app.post('/api/payment', async (req, res) => {
   const { id, amount, userCredentials} = req.body;
@@ -70,8 +70,6 @@ app.post('/api/payment', async (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(compression());
-  
   app.use(express.static('client/build'));
 
   app.get('*', function(req, res) {

@@ -24,11 +24,13 @@ const CartDropdown = ({cartItems, itemCount, total, history, dispatch}) => (
         </CartDropdownHeaderContainer>
         <CartItemsContainer>
             {
-                (cartItems.length && cartItems) ? (
+                (!cartItems || !cartItems.length) ? 
+                <EmptyMessageContainer>Your Cart Is Empty</EmptyMessageContainer>
+                : (
                 cartItems.map( cartItem => (
                     <CartItem key={cartItem._id} item={cartItem} />
                 )) 
-                ) : <EmptyMessageContainer>Your Cart Is Empty</EmptyMessageContainer>
+                )  
             }
             <CartDropdownButton color="white" backgroundColor="rgba(204, 76, 110, 1)" width="13em" height="auto" onClick={() => {
                 history.push("/checkout");

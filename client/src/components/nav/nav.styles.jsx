@@ -31,7 +31,7 @@ export const IconContainer = styled.div`
     justify-content: flex-end;
     color: white;
     .icon{
-        padding: 0 15px 0 15px;
+        padding: 0 15px 0 15px; 
     }
     .search{
         height: 45px;
@@ -46,6 +46,16 @@ export const IconContainer = styled.div`
             padding: 0;
         }
     }
+    .msg{
+        font-size: 14px;
+        position: absolute;
+        top: 4.5em;
+        right: 10.5em;
+        background-color: #a6a6a6;
+        padding: 4px;
+        border-radius:8px;
+        display: none;
+    }
     
 `; 
 export const Icons = styled(Link)`
@@ -54,6 +64,13 @@ export const Icons = styled(Link)`
     cursor: pointer;
     transition: width 2s linear;
     animation: ${fade} 1s ease-out;
+    &:hover{
+        .msg{
+            display: block;
+            animation: ${fade} 0.3s ease-out;
+        }
+    }
+    
 `;
 
  export const ButtonContainer = styled.div`

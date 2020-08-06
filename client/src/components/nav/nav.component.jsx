@@ -8,6 +8,7 @@ import {selectCurrentUser} from '../../redux/user/user.selectors';
 import { signOutStart } from '../../redux/user/user.actions';
 
 import {ReactComponent as Logo} from '../../assets/Logo-Maynooth-Option3.svg';
+import {ReactComponent as User} from '../../assets/User account _ Login free icon 1.svg';
 
 import {  
     NavContainer, LogoContainer, IconContainer,
@@ -42,7 +43,7 @@ const Navbar = ({hidden, currentUser, signOutStart}) => (
             <span className="search"><i className="ri-search-2-line"></i></span>
             {
                 currentUser ?
-                <Icons as="div" onClick={signOutStart}><i className="ri-logout-circle-r-line icon"></i></Icons>
+                <Icons as="div" onClick={signOutStart}><User className="icon"/><span className="msg">logout</span></Icons>
                 :
                 <Icons to="/signup"><i className="ri-user-add-line icon"></i></Icons>
             }

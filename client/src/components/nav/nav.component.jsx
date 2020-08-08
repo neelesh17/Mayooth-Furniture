@@ -22,23 +22,25 @@ import CartDropdown from '../cart-dropdown/cart.dropdown.component';
 
 const Navbar = ({hidden, currentUser, signOutStart}) => (
     <NavContainer>
-        <LogoContainer to="/">
-            <Logo className="logo" />
-        </LogoContainer>
-        <ButtonContainer>
-            <Link to="/shop/livingroom">
-                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
-            </Link>
-            <Link to="/shop/kitchendinner">
-                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Kitchen&Dinner</CustomButton>
-            </Link>
-            <Link to="/shop/bedroom">
-                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Bedroom</CustomButton>
-            </Link>
-            <Link to="/contactus">
-                <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Contact Us</CustomButton>
-            </Link>
-        </ButtonContainer>
+        <div>
+            <LogoContainer to="/">
+                <Logo className="logo" />
+            </LogoContainer>
+            <ButtonContainer>
+                <Link to="/shop/livingroom">
+                    <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Living Room</CustomButton>
+                </Link>
+                <Link to="/shop/kitchendinner">
+                    <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Kitchen&Dinner</CustomButton>
+                </Link>
+                <Link to="/shop/bedroom">
+                    <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Bedroom</CustomButton>
+                </Link>
+                <Link to="/contactus">
+                    <CustomButton color="rgba(39, 149, 76, 1)" backgroundColor = "rgba(255, 255,255, 1)">Contact Us</CustomButton>
+                </Link>
+            </ButtonContainer>
+        </div>
         <IconContainer>
             <span className="search"><i className="ri-search-2-line"></i></span>
             {

@@ -8,13 +8,16 @@ export const NavContainer = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: rgba(0,0,0,0.7);
+    div{
+        display: flex;
+    }
     @media screen and (max-width: 800px) {
         height: 60px;
     }
 `;
 
 export const LogoContainer = styled(Link)`
-    width: 15em;
+    width: 17em;
     height: 60%;
     padding: 15px 0 0 25px ;
     text-align: center;
@@ -74,9 +77,8 @@ export const Icons = styled(Link)`
 `;
 
  export const ButtonContainer = styled.div`
-    padding: 5px;
-    width: 1000px;
-    height: 40px;
+    margin: 5px;
+    width: 40em;
     display: flex;
     justify-content: space-between;
  `;

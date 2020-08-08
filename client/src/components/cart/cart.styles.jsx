@@ -2,17 +2,17 @@ import styled from 'styled-components';
 
 
 export const ItemCountConatiner = styled.span`
+    position: absolute;
+    top: 2.8em;
+    right: 4.2em;
     display: flex;
     justify-content: center;
     align-items:center;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     font-size: 10px;
     font-weight: bold;
-    background-color: rgba(76, 179, 170, 1);
-    border-radius: 50%;
     color: white;
-    margin-left: 2%;
 `;
 
 export const  CartIconContainer = styled.div`

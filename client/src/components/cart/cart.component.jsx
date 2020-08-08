@@ -8,9 +8,8 @@ import {CartIconContainer, ItemCountConatiner} from './cart.styles';
 
 const Cart = ({toggleCartHidden, itemCount}) => (
     <CartIconContainer onClick={toggleCartHidden}>
-        <i className="ri-shopping-cart-line"></i>
-        Cart
         <ItemCountConatiner>{itemCount}</ItemCountConatiner>
+        <i className="ri-shopping-cart-line ri-lg"></i>
     </CartIconContainer>
 );
 
